@@ -29,11 +29,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-        <Link to={"/"} className="text-end text-xl font-bold">Oldschool.</Link>
+        <Link to={"/"} className="text-xl font-bold">Oldschool.</Link>
         </div>
       </div>
       <div className="hidden md:flex">
-        <ul className="menu menu-horizontal gap-2 uppercase px-1">
+        <ul className="menu menu-horizontal gap-2 uppercase px-1 font-bold">
           {navigators.map((navitem, index) => (
             <Link key={index} to={`${navitem?.to}`}>
               {navitem?.name}
