@@ -1,17 +1,18 @@
 import schoolImg from "../../../src/assets/old-school.jpg";
+import CustomBadge from "../customBadge/CustomBadge";
 
 
 const Banner = () => {
   return (
-    <div>
+    <div className="">
       <img
         src={schoolImg}
         alt="old-school-banner-image"
-        className="opacity-60 w-full h-[250px] md:h-[500px] lg:h-[700px] xl:h-[850px] object-cover"
+        className="opacity-60 w-full h-[250px] md:h-[500px] lg:h-[700px] xl:h-[850px] object-cover relative"
       />
-      <h2 className="-translate-y-80 font-bold text-white uppercase text-3xl text-start w-20">
-        Old School
-      </h2>
+     
+      <CustomBadge/>
+    
     </div>
   );
 };

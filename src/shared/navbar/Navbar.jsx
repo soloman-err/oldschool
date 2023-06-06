@@ -11,7 +11,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="navbar absolute z-50 flex justify-between md:px-10 items-center shadow-lg">
+    <div className="navbar absolute z-50 flex justify-between md:px-10 items-center shadow-lg text-white">
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
