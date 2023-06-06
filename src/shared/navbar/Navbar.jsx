@@ -11,7 +11,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="navbar flex justify-between px-10 items-center bg-zinc-700">
+    <div className="navbar absolute z-50 flex justify-between md:px-10 items-center shadow-lg">
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -19,7 +19,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-zinc-700 mt-3 p-2 space-y-2 shadow-lg rounded w-52 uppercase"
+            className="menu menu-sm dropdown-content mt-3 p-2 space-y-3 shadow-lg rounded w-52 uppercase font-semibold"
           >
             {navigators.map((navitem, index) => (
               <Link key={index} to={`${navitem?.to}`}>
@@ -29,13 +29,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-        <Link to={"/"} className="text-xl md:text-2xl lg:text-4xl font-bold">Oldschool.</Link>
+        <Link to={"/"} className="text-xl md:text-3xl lg:text-4xl font-bold">Oldschool.</Link>
         </div>
       </div>
       <div className="hidden md:flex">
-        <ul className="menu menu-horizontal gap-6 uppercase px-1 font-bold">
+        <ul className="menu menu-horizontal gap-6 uppercase px-1 xl:text-lg font-semibold">
           {navigators.map((navitem, index) => (
-            <Link key={index} to={`${navitem?.to}`}>
+            <Link key={index} to={`${navitem?.to}`} className='tracking-wider'>
               {navitem?.name}
             </Link>
           ))}
