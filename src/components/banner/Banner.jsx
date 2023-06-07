@@ -1,5 +1,4 @@
 import schoolImg from "../../../src/assets/old-school.jpg";
-import CustomBadge from "../customBadge/CustomBadge";
 
 
 const Banner = () => {
@@ -11,7 +10,7 @@ const Banner = () => {
         className="opacity-60 w-full h-[250px] md:h-[500px] lg:h-[700px] xl:h-[850px] object-cover relative"
       />
      
-      <CustomBadge/>
+      {/* <CustomBadge/> */}
     
     </div>
   );

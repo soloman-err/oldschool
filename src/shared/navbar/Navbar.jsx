@@ -1,5 +1,6 @@
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+// import { schoolLogo } from "../../../src/assets/old-school-logo.png";
 
 const Navbar = () => {
   const navigators = [
@@ -29,7 +30,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-        <Link to={"/"} className="text-xl md:text-3xl lg:text-4xl font-bold">Oldschool.</Link>
+        {/* <Link to={"/"} className="text-xl md:text-3xl lg:text-4xl font-bold">Oldschool.</Link> */}
+        <img src={"../../../src/assets/old-school-logo.png"} alt="" className="w-16 h-16" />
         </div>
       </div>
       <div className="hidden md:flex">
