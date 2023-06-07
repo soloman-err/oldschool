@@ -1,4 +1,4 @@
-import schoolImg from "../../../src/assets/old-school.jpg";
+import schoolImg from "/old-school.jpg";
 
 
 const Banner = () => {

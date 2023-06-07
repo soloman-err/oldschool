@@ -13,7 +13,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <div className="navbar flex justify-between md:px-10 items-center shadow-lg rounded-lg">
+    <div className="navbar flex justify-between md:px-10 items-center shadow-lg rounded-b-lg py-1 bg-blue-950">
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -39,16 +39,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          {/* <Link to={"/"} className="text-xl md:text-3xl lg:text-4xl font-bold">Oldschool.</Link> */}
           <img
-            src={'../../../src/assets/old-school-logo.png'}
+            src={'/old-school-logo.png'}
             alt=""
-            className="w-16 h-16"
+            className="w-20 h-20"
           />
         </div>
       </div>
       <div className="hidden md:flex">
-        <ul className="menu menu-horizontal gap-6 uppercase px-1 xl:text-lg font-bold">
+        <ul className="menu menu-horizontal gap-6 uppercase px-1 xl:text-lg font-semibold">
           {navigators.map((navitem, index) => (
             <Link
               key={index}

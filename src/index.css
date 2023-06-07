@@ -12,3 +12,10 @@
 #custom-badge{
     clip-path: polygon(0 24%, 22% 23%, 41% 23%, 62% 23%, 80% 23%, 100% 23%, 89% 60%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 12% 64%);
 }
+
+.hero-clip{
+    font-size: 6rem;
+    clip-path: polygon(89% 0, 41% 52%, 86% 100%, 51% 100%, 0% 50%, 56% 0);
+    animation: slide 5s liner infinite;
+
+}
