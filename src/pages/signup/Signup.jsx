@@ -169,9 +169,9 @@ const Signup = () => {
                 Login
               </Link>
             </span>
-            <span className="label-text-alt pt-1 text-blue-700">
+            {/* <span className="label-text-alt pt-1 text-blue-700">
               <Link>Forgot password?</Link>
-            </span>
+            </span> */}
           </div>
 
           <div className="">

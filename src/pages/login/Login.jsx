@@ -56,9 +56,9 @@ const Login = () => {
               placeholder="password"
               className="input input-bordered input-sm rounded-md"
             />
-            <span className="label-text-alt pt-1 text-blue-700 ">
+            {/* <span className="label-text-alt pt-1 text-blue-700 ">
               <Link>Forgot password?</Link>
-            </span>
+            </span> */}
           </div>
 
           <div className="text-center pt-5">

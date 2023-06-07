@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="grid md:grid-cols-2 py-10 lg:py-32 items-center px-5 md:px-0 shadow-xl">
+    <section className="grid md:grid-cols-2 py-10 lg:py-32 items-center px-5 md:px-0">
       <div className="text-center md:text-start md:w-3/4 mx-auto space-y-5">
         <h2 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-star">
           <span className="bg-gradient-to-l from-blue-900 to-blue-950 bg-clip-tex text-transparen text-blac px-1 m-1">

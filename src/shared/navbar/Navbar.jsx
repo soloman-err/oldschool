@@ -13,7 +13,7 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <div className="navbar flex justify-between md:px-10 items-center shadow-lg rounded-b-lg py-1 bg-blue-950">
+    <div className="navbar flex justify-between md:px-5 items-center shadow-md py-1">
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -39,15 +39,13 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          <img
-            src={'/old-school-logo.png'}
-            alt=""
-            className="w-20 h-20"
-          />
+          <Link to={'/'}>
+            <img src={'/old-school-logo.png'} alt="" className="w-16 h-16" />
+          </Link>
         </div>
       </div>
       <div className="hidden md:flex">
-        <ul className="menu menu-horizontal gap-6 uppercase px-1 xl:text-lg font-semibold">
+        <ul className="menu menu-horizontal gap-6 uppercase px-1 font-semibold">
           {navigators.map((navitem, index) => (
             <Link
               key={index}
@@ -62,6 +60,16 @@ const Navbar = () => {
             </Link>
           ))}
         </ul>
+      </div>
+      <div className="flex items-center space-x-1">
+        {/* <div className=" border-b">
+          <input type="text" className="input input-sm rounded-sm" />
+        </div> */}
+        {/* <FaSearch size={20} /> */}
+        {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
+        <button className="btn btn-sm btn-ghost">login</button>
+        <span className="w-[2px] h-6 bg-slate-400"></span>
+        <button className="btn btn-sm btn-ghost">Register</button>
       </div>
     </div>
   );
