@@ -1,5 +1,6 @@
 import React from 'react';
-import Hero from './Hero';
+import Hero from './hero/Hero';
+import PopularClasses from './popularClasses/PopularClasses';
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       {/* <Banner /> */}
       {/* <StickySidebar/> */}
       <Hero/>
+      <PopularClasses/>
     </div>
   );
 };

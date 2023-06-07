@@ -1,11 +1,9 @@
-import React from 'react';
-
 const Hero = () => {
   return (
-    <section className="grid md:grid-cols-2 py-10 lg:py-32 items-center px-5 md:px-0">
+    <section className="grid md:grid-cols-2 py-10 lg:py-32 items-center px-5 md:px-0 shadow-xl">
       <div className="text-center md:text-start md:w-3/4 mx-auto space-y-5">
         <h2 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-star">
-          <span className="bg-gradient-to-l from-blue-300 to-blue-900 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-l from-blue-900 to-blue-950 bg-clip-tex text-transparen text-blac px-1 m-1">
             Oldschool
           </span>{' '}
           Where Learning Takes Flight

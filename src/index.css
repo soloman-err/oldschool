@@ -16,6 +16,4 @@
 .hero-clip{
     font-size: 6rem;
     clip-path: polygon(89% 0, 41% 52%, 86% 100%, 51% 100%, 0% 50%, 56% 0);
-    animation: slide 5s liner infinite;
-
 }
