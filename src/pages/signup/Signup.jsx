@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  // update user profile:
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Reset the form
-    setEmail('');
-    setPassword('');
-  };
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  // const handleEmailChange = (e) => {
+  //   setEmail(e.target.value);
+  // };
+
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Add your login logic here
+  //   console.log('Email:', email);
+  //   console.log('Password:', password);
+  //   // Reset the form
+  //   setEmail('');
+  //   setPassword('');
+  // };
   return (
-    <div className="flex justify-center items-center py-10 md:py-32 md:h-scree">
+    <div className="flex justify-center items-center h-screen">
       <div className="">
         <form
-          className="w-full bg-white shadow-2xl rounded-xl p-4 space-y-1"
+          className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-1"
           //   onSubmit={handleSubmit}
         >
           <h1 className="text-center text-slate-800 font-bold pb-5 text-lg">
             Please Register
           </h1>
 
-          <div className="flex flex-col md:flex-row gap-1 md:gap-2">
+          <div className="flex flex-co gap-2">
             {/* Form-col-1 */}
             <div>
               <div className="form-control">
@@ -154,7 +164,7 @@ const Signup = () => {
 
           <div className="text-center pt-5">
             <button
-              className="btn btn-sm w-full font-bold bg-blue-500 text-white"
+              className="btn btn-sm btn-wide font-bold bg-blue-500 text-white"
               type="submit"
             >
               Register
