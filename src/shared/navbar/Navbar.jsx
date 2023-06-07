@@ -21,13 +21,13 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 space-y-3 shadow-lg rounded w-52 uppercase font-semibold bg-base-100"
+            className="menu menu-sm dropdown-content mt-3 p-2 space-y-3 shadow-lg rounded w-52 uppercase font-semibold bg-white z-50"
           >
             {navigators.map((navitem, index) => (
               <Link
                 key={index}
                 to={navitem.to}
-                className={`tracking-wider ${
+                className={`tracking-wider z-50 ${
                   location.pathname === navitem.to
                     ? 'underline underline-offset-4'
                     : ''
@@ -62,14 +62,13 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex items-center space-x-1">
-        {/* <div className=" border-b">
-          <input type="text" className="input input-sm rounded-sm" />
-        </div> */}
-        {/* <FaSearch size={20} /> */}
-        {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
-        <button className="btn btn-sm btn-ghost">login</button>
+        <Link to={"/login"}>
+          <button className="btn btn-sm btn-ghost rounded-sm">login</button>
+        </Link>
         <span className="w-[2px] h-6 bg-slate-400"></span>
-        <button className="btn btn-sm btn-ghost">Register</button>
+        <Link to={"/signup"}>
+          <button className="btn btn-sm btn-ghost rounded-sm">Register</button>
+        </Link>
       </div>
     </div>
   );

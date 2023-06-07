@@ -1,12 +1,12 @@
 import React from 'react';
-import Hero from './hero/Hero';
+import Banner from './banner/Banner';
 
 const Home = () => {
   return (
     <div>
-      {/* <Banner /> */}
+      <Banner />
       {/* <StickySidebar/> */}
-      <Hero/>
+      {/* <Hero/> */}
       {/* <PopularClasses/> */}
       {/* <PopularInstructors/> */}
     </div>
