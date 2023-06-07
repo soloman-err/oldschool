@@ -11,7 +11,6 @@ const Banner = () => {
       />
      
       {/* <CustomBadge/> */}
-    
     </div>
   );
 };
