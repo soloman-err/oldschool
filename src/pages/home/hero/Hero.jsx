@@ -16,9 +16,9 @@ const Hero = () => {
       </div>
 
       <div className='flex justify-center text-5xl lg:text-9xl py-5 md:px-40 animate-pulse rotate-90 md:rotate-45 lg:rotate-12 xl:rotate-0 mt-16'>
-        <span className="hero-clip bg-gradient-to-l from-blue-900 to-blue-950 -translate-x-3">=</span>
-        <span className="hero-clip bg-gradient-to-l from-blue-800 to-blue-900  -translate-x-3">=</span>
-        <span className="hero-clip bg-gradient-to-l from-blue-700 to-blue-800  -translate-x-3">=</span>
+        <span className="hero-clip bg-gradient-to-l from-blue-900 to-blue-950 -translate-x-3">_</span>
+        <span className="hero-clip bg-gradient-to-l from-blue-800 to-blue-900  -translate-x-3">_</span>
+        <span className="hero-clip bg-gradient-to-l from-blue-700 to-blue-800  -translate-x-3">_</span>
       </div>
     </section>
   );
