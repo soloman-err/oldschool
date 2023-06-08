@@ -3,7 +3,7 @@ import Tilt from 'react-parallax-tilt';
 const CrystalCard = () => {
   return (
     <Tilt>
-      <div className="card w-full glass translate-z-60">
+      <div className="w-full glass translate-z-60">
         <figure>
           <img src="/class.png" alt="class-image" />
         </figure>

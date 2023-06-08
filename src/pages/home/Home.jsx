@@ -1,13 +1,14 @@
 import React from 'react';
-import Hero from './hero/Hero';
+import Banner from './banner/Banner';
+import PopularClasses from './popularClasses/PopularClasses';
 
 const Home = () => {
   return (
     <div>
-      {/* <Banner /> */}
+      <Banner />
       {/* <StickySidebar/> */}
-      <Hero/>
-      {/* <PopularClasses/> */}
+      {/* <Hero/> */}
+      <PopularClasses/>
       {/* <PopularInstructors/> */}
     </div>
   );
