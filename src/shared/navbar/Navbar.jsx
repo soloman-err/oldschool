@@ -67,9 +67,13 @@ const Navbar = () => {
         </div> */}
         {/* <FaSearch size={20} /> */}
         {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
-        <button className="btn btn-sm btn-ghost">login</button>
+        <Link to={'/login'}>
+          <button className="btn btn-sm btn-ghost">login</button>
+        </Link>
         <span className="w-[2px] h-6 bg-slate-400"></span>
-        <button className="btn btn-sm btn-ghost">Register</button>
+        <Link to={'/signup'}>
+          <button className="btn btn-sm btn-ghost">Register</button>
+        </Link>
       </div>
     </div>
   );
