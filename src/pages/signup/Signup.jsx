@@ -210,23 +210,19 @@ const Signup = () => {
             <span className="label-text-alt">
               Already have an account?
               <Link to={'/login'} className="text-blue-800">
-                {' '}
                 Login
               </Link>
             </span>
-            {/* <span className="label-text-alt pt-1 text-blue-700">
-              <Link>Forgot password?</Link>
-            </span> */}
           </div>
 
           <div className="">
             <span className="divider">or</span>
             <div className="flex flex-row gap-2 justify-center items-center">
-              <button className='flex gap-2 border p-1 rounded w-full shadow-sm'>
+              <button className="flex gap-2 border p-1 rounded w-full shadow-sm">
                 <img src="/google-icon.png" alt="login-icon" className="w-6" />
                 Google
               </button>
-              <button className='flex items-center gap-2 border p-1 rounded w-full shadow-sm'>
+              <button className="flex items-center gap-2 border p-1 rounded w-full shadow-sm">
                 <img src="/github-icon.png" alt="login-icon" className="w-6" />
                 Github
               </button>

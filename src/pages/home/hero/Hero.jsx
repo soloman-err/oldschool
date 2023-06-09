@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="grid md:grid-cols-2 py-10 lg:py-32 items-center px-5 md:px-0">
       <div className="text-center md:text-start md:w-3/4 mx-auto space-y-5">
         <h2 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-star">
-          <span className="bg-gradient-to-l from-blue-900 to-blue-950 bg-clip-tex text-transparen text-blac px-1 m-1">
+          <span className="">
             Oldschool
           </span>{' '}
           Where Learning Takes Flight
@@ -16,14 +16,14 @@ const Hero = () => {
         </p>
 
         <Link to={"/login"}>
-          <button className="btn btn-wide bg-gradient-to-l from-blue-800 to-blue-950 font-bold">
+          <button className="btn btn-wide bg-gradient-to-l from-blue-900 to-blue-950 font-bold text-white rounded-sm">
             Enroll Today
           </button>
         </Link>
       </div>
 
-      <div className="flex justify-center text-5xl lg:text-9xl py-5 md:px-40 animate-pulse rotate-90 md:rotate-45 lg:rotate-12 xl:rotate-0 mt-16">
-        <span className="hero-clip bg-gradient-to-l from-blue-900 to-blue-950 -translate-x-3">
+      <div className="flex justify-center text-5xl lg:text-9xl py-5 md:px-40 rotate-90 md:rotate-45 lg:rotate-12 xl:rotate-0 mt-16">
+        <span className="hero-clip bg-gradient-to-l from-blue-900 to-blue-950 -translate-x-">
           _
         </span>
         <span className="hero-clip bg-gradient-to-l from-blue-800 to-blue-900  -translate-x-3">

@@ -7,7 +7,7 @@ import {
 
 const Card = () => {
   return (
-    <div className="relative w-full h-[400px] border border-slate-400 translate-z-60">
+    <div className="relative w-full h-[400px] border border-slate-400 translate-z-60 overflow-hidden">
       <figure>
         <img src="/instructor-i.jpg" alt="class-image" className="w-full" />
       </figure>

@@ -6,7 +6,8 @@ import Courses from '../pages/courses/Courses';
 import Error from '../pages/error/Error';
 import Events from '../pages/events/Events';
 import Features from '../pages/features/Features';
-import Home from '../pages/home/Home';
+// import Home from '../pages/home/Home';
+import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
 import Signup from '../pages/signup/Signup';
 

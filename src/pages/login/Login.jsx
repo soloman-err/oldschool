@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signIn, googleSignIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const from = location.state?.from?.pathname || '/';
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // Reset the form
-    setEmail('');
-    setPassword('');
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          title: 'Logged in successfully!',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown',
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp',
+          },
+        });
+        navigate(from, { replace: true });
+      })
+      .then((err) => {
+        console.log("Error:", err);
+      });
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center mt-20 md:mt-32 lg:mt-40">
       <div className="">
         <form
-          className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-2"
-          onSubmit={handleSubmit}
+          className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-5 pb-8 mb-4 space-y-2"
+          onSubmit={handleLogin}
         >
           <h1 className="text-center text-slate-800 font-bold pb-10 text-xl">
             Please login
@@ -56,9 +69,6 @@ const Login = () => {
               placeholder="password"
               className="input input-bordered input-sm rounded-md"
             />
-            {/* <span className="label-text-alt pt-1 text-blue-700 ">
-              <Link>Forgot password?</Link>
-            </span> */}
           </div>
 
           <div className="text-center pt-5">
@@ -72,19 +82,20 @@ const Login = () => {
 
           <span className="label-text-alt">
             Don't have an account?
-            <Link to={'/signup'}
-            className="text-blue-800"
-            > Sign up</Link>
+            <Link to={'/signup'} className="text-blue-800">
+              {' '}
+              Sign up
+            </Link>
           </span>
 
           <div className="">
             <span className="divider">or</span>
             <div className="flex flex-row gap-2 justify-center items-center">
-              <button className='flex gap-2 border p-1 rounded w-full shadow-sm'>
+              <button className="flex gap-2 border p-1 rounded w-full shadow-sm">
                 <img src="/google-icon.png" alt="login-icon" className="w-6" />
                 Google
               </button>
-              <button className='flex items-center gap-2 border p-1 rounded w-full shadow-sm'>
+              <button className="flex items-center gap-2 border p-1 rounded w-full shadow-sm">
                 <img src="/github-icon.png" alt="login-icon" className="w-6" />
                 Github
               </button>
