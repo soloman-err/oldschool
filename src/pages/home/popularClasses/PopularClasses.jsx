@@ -1,20 +1,27 @@
 import React from 'react';
-import CrystalCard from '../../../components/cards/CrystalCard';
+import LeftCard from './classCards/LeftCard';
+import RightCard from './classCards/RightCard';
 
 const PopularClasses = () => {
-    return (
-        <div className="mt-8 px-5 w-5/6 mx-auto">
-            <h1 className='text-3xl md:text-5xl font-bold py-1 text-center'>Popular Classes</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-5 mt-4">
-            <CrystalCard/>
-            <CrystalCard/>
-            <CrystalCard/>
-            <CrystalCard/>
-            <CrystalCard/>
-            <CrystalCard/>
-            </div>
-        </div>
-    );
+  return (
+    <section className="flex flex-col justify-between mt-20 w-[90%] mx-auto border-r pr-2">
+      <h1 className="text-3xl md:text-4xl font-bold text-center">
+        Popu<span className="border-b-4 border-blue-900">lar Classes</span>
+      </h1>
+      <div className="space-y-12 md:space-y-5 mt-8">
+      <LeftCard/>
+      <RightCard/>
+      <LeftCard/>
+      <RightCard/>
+      <LeftCard/>
+      <RightCard/>
+      </div>
+
+      {/* <div className="mt-10 md:mt-0">
+      <h1 className="text-2xl">Lorem ipsum, dolor sit amet consectetur.</h1>
+    </div> */}
+    </section>
+  );
 };
 
 export default PopularClasses;

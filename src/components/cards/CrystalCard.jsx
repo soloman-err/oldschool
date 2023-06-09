@@ -5,7 +5,7 @@ const CrystalCard = () => {
     <Tilt>
       <div className="w-full glass translate-z-60">
         <figure>
-          <img src="/class.png" alt="class-image" />
+          <img src="/class.png" alt="class-image" className="w-full"/>
         </figure>
         <div className="card-body">
           <h2 className="card-title">Life hack</h2>

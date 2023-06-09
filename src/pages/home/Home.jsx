@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './banner/Banner';
 import PopularClasses from './popularClasses/PopularClasses';
+// import PopularInstructors from './popularInstructors/PopularInstructors';
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       {/* <Hero/> */}
       <PopularClasses/>
       {/* <PopularInstructors/> */}
+      {/* <Featured/> */}
     </div>
   );
 };
