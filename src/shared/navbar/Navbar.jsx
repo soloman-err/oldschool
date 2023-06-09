@@ -1,5 +1,7 @@
 import { FaBars } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
   const navigators = [
@@ -10,7 +12,36 @@ const Navbar = () => {
     { name: 'Blog', to: '/blog' },
   ];
 
-  const location = useLocation();
+  const { user, logOut } = useAuth();
+  console.log(user?.displayName);
+  const navigate = useNavigate();
+
+  // user logout:
+  const handleLogOut = () => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You'll be logged out!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Log Out!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Logged Out',
+            'Thank you for being with oldschool',
+            'success'
+          );
+          logOut();
+        }
+      });
+      navigate('/');
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
 
   return (
     <div className="navbar flex flex-row justify-between md:px-2 items-center border-b sticky top-0 bg-white py-3 z-10">
@@ -62,18 +93,39 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex items-center space-x-1">
-        {/* <div className=" border-b">
+        {user ? (
+          <>
+            <Link to={'/profile'}>
+              <img
+                src={user?.photoURL || '/user-demo.png'}
+                title={user?.displayName}
+                alt="user-image"
+                className="w-10 h-10 rounded-full m-1"
+              />
+            </Link>
+            <span className="w-[2px] h-6 bg-slate-400"></span>
+            <Link to={''}>
+              <button onClick={handleLogOut} className="btn btn-sm btn-ghost">
+                Logout
+              </button>
+            </Link>
+          </>
+        ) : (
+          <>
+            {/* <div className=" border-b">
           <input type="text" className="input input-sm rounded-sm" />
         </div> */}
-        {/* <FaSearch size={20} /> */}
-        {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
-        <Link to={'/login'}>
-          <button className="btn btn-sm btn-ghost">login</button>
-        </Link>
-        <span className="w-[2px] h-6 bg-slate-400"></span>
-        <Link to={'/signup'}>
-          <button className="btn btn-sm btn-ghost">Register</button>
-        </Link>
+            {/* <FaSearch size={20} /> */}
+            {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
+            <Link to={'/login'}>
+              <button className="btn btn-sm btn-ghost">login</button>
+            </Link>
+            <span className="w-[2px] h-6 bg-slate-400"></span>
+            <Link to={'/signup'}>
+              <button className="btn btn-sm btn-ghost">Register</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
