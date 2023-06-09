@@ -3,14 +3,15 @@ import DashboardLayout from '../layout/DashboardLayout';
 import ErrorLayout from '../layout/ErrorLayout';
 import Root from '../layout/Root';
 import Blog from '../pages/blog/Blog';
-import Courses from '../pages/courses/Courses';
+import Classes from '../pages/classes/Classes';
 import Error from '../pages/error/Error';
 import Events from '../pages/events/Events';
-import Features from '../pages/features/Features';
 import Home from '../pages/home/home/Home';
+import Instructors from '../pages/instructors/Instructors';
 import Login from '../pages/login/Login';
 import Signup from '../pages/signup/Signup';
 import Dashboard from '../shared/dashboard/Dashboard';
+import Profile from '../shared/profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,13 @@ const router = createBrowserRouter([
     element: <Root></Root>,
     children: [
       { path: '/', element: <Home></Home> },
-      { path: '/courses', element: <Courses></Courses> },
-      { path: '/features', element: <Features></Features> },
+      { path: '/classes', element: <Classes></Classes> },
+      { path: '/instructors', element: <Instructors></Instructors> },
       { path: '/events', element: <Events></Events> },
       { path: '/blog', element: <Blog></Blog> },
       { path: '/login', element: <Login></Login> },
       { path: '/signup', element: <Signup></Signup> },
+      { path: '/profile', element: <Profile></Profile> },
     ],
   },
   {

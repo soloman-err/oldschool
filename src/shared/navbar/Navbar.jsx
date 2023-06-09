@@ -6,8 +6,8 @@ import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
   const navigators = [
     { name: 'Home', to: '/' },
-    { name: 'Courses', to: '/courses' },
-    { name: 'Features', to: '/features' },
+    { name: 'Classes', to: '/classes' },
+    { name: 'Instructors', to: '/instructors' },
     { name: 'Events', to: '/events' },
     { name: 'Dashboard', to: '/dashboard' },
   ];
