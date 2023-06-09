@@ -17,30 +17,31 @@ const SocialLogin = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
 
-        const savedUser = {
-          name: loggedUser.displayName,
-          email: loggedUser.email,
-        };
-        console.log(savedUser);
-        
-        // post users to to database:
-        fetch(`http://localhost:2000/users`, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(savedUser),
-        })
-          .then((res) => res.json())
-          .then(() => {
-            navigate(from, { replace: true });
-          });
+        // const savedUser = {
+        //   name: loggedUser?.displayName,
+        //   email: loggedUser?.email,
+        // };
+        // console.log(savedUser);
+
+        // // post users to to database:
+        // fetch(`http://localhost:2000/users`, {
+        //   method: 'POST',
+        //   headers: {
+        //     'content-type': 'application/json',
+        //   },
+        //   body: JSON.stringify(savedUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then(() => {
+        //     navigate(from, { replace: true });
+        //   });
 
         // confirmation:
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Welcome to Oldschool',
+          text: 'logged in successfully!',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -63,7 +64,7 @@ const SocialLogin = () => {
           Google
         </button>
         <button
-        //   onClick={handleGithubSignIn}
+          //   onClick={handleGithubSignIn}
           className="flex items-center gap-2 border p-1 rounded w-full shadow-sm"
         >
           <img src="/github-icon.png" alt="login-icon" className="w-6" />

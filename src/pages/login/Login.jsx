@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 import SocialLogin from './SocialLogin';
 
 const Login = () => {
-  const { signIn, googleSignIn } = useAuth();
+  const { signIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,26 +20,33 @@ const Login = () => {
     console.log(email, password);
 
     // email-password sign in:
-    signIn(email, password)
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Welcome to Oldschool',
-          showConfirmButton: false,
-          timer: 1500,
+    try {
+      signIn(email, password)
+        .then((result) => {
+          console.log(result.user);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Welcome to Oldschool',
+            text: 'logged in successfully!',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        })
+        .then((error) => {
+          console.log('Error:', error);
         });
-        navigate(from, { replace: true });
-      })
-      .then((err) => {
-        console.log('Error:', err);
-      });
+    } catch (error) {
+      console.log('An error occurred:', error);
+    }
   };
 
   return (
     <>
-      <Helmet><title>oldschool | login</title></Helmet>
+      <Helmet>
+        <title>oldschool | login</title>
+      </Helmet>
       <div className="flex justify-center items-center mt-20 md:mt-32 lg:mt-40">
         <div className="">
           <form

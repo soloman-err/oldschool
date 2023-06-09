@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from '../login/SocialLogin';
@@ -14,52 +14,60 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
   const { createUser, updateUserProfile } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     // create a new user:
-    createUser(data?.name, data?.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-
-      updateUserProfile(data?.name, data?.password)
-        .then(() => {
-          const savedUser = {
-            name: data?.name,
-            email: data?.email,
-          };
-
-          fetch(`http://localhost:2000/users`, {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json',
-            },
-            body: JSON.stringify(savedUser),
+    try{
+      createUser(data.email, data.password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+  
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            const savedUser = {
+              name: data.name,
+              email: data.email,
+            };
+  
+            fetch(`http://localhost:2000/users`, {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(savedUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data.data);
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  navigate('/');
+                }
+              });
           })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              if (data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: 'Your work has been saved',
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                Navigate('/');
-              }
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    }
+    catch(error) {
+      console.log("An error occurred:", error);
+    }
   };
 
   return (
     <>
-      <Helmet><title>oldschool | register</title></Helmet>
+      <Helmet>
+        <title>oldschool | register</title>
+      </Helmet>
       <div className="flex justify-center items-center mt-24 md:mt-32 h-screen ">
         <div className="">
           <form
@@ -181,7 +189,7 @@ const Signup = () => {
                     type="tel"
                     name="phone"
                     {...register('phone')}
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     placeholder="+012-345-6789"
                     className="input input-bordered input-sm rounded-md"
                   />
