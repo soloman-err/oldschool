@@ -2,22 +2,22 @@
 Bedford School,UK. that I named 'oldschool' in my project. This is a MERN stack project with features of Admin, Instructors & students environment.
 
 ### Technologies/packages:
-=> HTML5
-=> CSS3
-=> TAILWIND
-=> JAVASCRIPT
-=> REACT
-=> NodeJS
-=> ExpressJS
-=> Vercel
+> HTML5
+> CSS3
+> TAILWIND
+> JAVASCRIPT
+> REACT
+> NodeJS
+> ExpressJS
+> Vercel
 
 ### Packages:
-=> Firebase
-=> Axios
-=> JWT
+> Firebase
+> Axios
+> JWT
 
 ### Database:
-=> MongoDB(NoSQL)
+> MongoDB(NoSQL)
 
 ### Panels(Brief):
 #### ADMIN:
@@ -30,5 +30,5 @@ Instructors have a certain role permission. They can upload their classes.
 They are the regular users of school, They've limited access to the school website. Regular users have the access of log in to his/her account & their dashboard also they can see the information of instructors by logging in.
 
 
-Copyright &copy;solo 2023
+Copyright &copy;solo
 https://oldschool-edu.web.app
