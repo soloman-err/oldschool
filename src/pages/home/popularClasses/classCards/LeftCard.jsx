@@ -17,7 +17,7 @@ const LeftCard = () => {
           Card
         </div>
         <button className="btn btn-ghost btn-sm rounded-none bg-slate-800 text-white w-full">
-          See Details
+          View Details
         </button>
       </div>
     </div>
