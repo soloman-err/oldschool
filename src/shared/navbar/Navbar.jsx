@@ -9,11 +9,12 @@ const Navbar = () => {
     { name: 'Courses', to: '/courses' },
     { name: 'Features', to: '/features' },
     { name: 'Events', to: '/events' },
-    { name: 'Blog', to: '/blog' },
+    { name: 'Dashboard', to: '/dashboard' },
   ];
 
   const { user, logOut } = useAuth();
   console.log(user?.displayName);
+
   const navigate = useNavigate();
 
   // user logout:
@@ -54,19 +55,39 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 p-2 space-y-3 shadow-lg rounded w-52 uppercase font-semibold bg-base-100"
           >
-            {navigators.map((navitem, index) => (
-              <Link
-                key={index}
-                to={navitem.to}
-                className={`tracking-wider ${
-                  location.pathname === navitem.to
-                    ? 'underline underline-offset-4'
-                    : ''
-                }`}
-              >
-                {navitem?.name}
-              </Link>
-            ))}
+            {user && user ? (
+              <>
+                {navigators.map((navitem, index) => (
+                  <Link
+                    key={index}
+                    to={navitem.to}
+                    className={`tracking-wider ${
+                      location.pathname === navitem.to
+                        ? 'underline underline-offset-4'
+                        : ''
+                    }`}
+                  >
+                    {navitem?.name}
+                  </Link>
+                ))}
+              </>
+            ) : (
+              <>
+                {navigators.slice(0, 4).map((navitem, index) => (
+                  <Link
+                    key={index}
+                    to={navitem.to}
+                    className={`tracking-wider ${
+                      location.pathname === navitem.to
+                        ? 'underline underline-offset-4'
+                        : ''
+                    }`}
+                  >
+                    {navitem?.name}
+                  </Link>
+                ))}
+              </>
+            )}
           </ul>
         </div>
         <div>
@@ -77,19 +98,39 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex">
         <ul className="menu menu-horizontal gap-6 uppercase px-1 font-semibold">
-          {navigators.map((navitem, index) => (
-            <Link
-              key={index}
-              to={navitem.to}
-              className={`tracking-wider ${
-                location.pathname === navitem.to
-                  ? 'underline underline-offset-4'
-                  : ''
-              }`}
-            >
-              {navitem?.name}
-            </Link>
-          ))}
+          {user && user ? (
+            <>
+              {navigators.map((navitem, index) => (
+                <Link
+                  key={index}
+                  to={navitem.to}
+                  className={`tracking-wider ${
+                    location.pathname === navitem.to
+                      ? 'underline underline-offset-4'
+                      : ''
+                  }`}
+                >
+                  {navitem?.name}
+                </Link>
+              ))}
+            </>
+          ) : (
+            <>
+              {navigators.slice(0, 4).map((navitem, index) => (
+                <Link
+                  key={index}
+                  to={navitem.to}
+                  className={`tracking-wider ${
+                    location.pathname === navitem.to
+                      ? 'underline underline-offset-4'
+                      : ''
+                  }`}
+                >
+                  {navitem?.name}
+                </Link>
+              ))}
+            </>
+          )}
         </ul>
       </div>
       <div className="flex items-center space-x-1">

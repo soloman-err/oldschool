@@ -38,18 +38,18 @@ const Aside = () => {
   };
 
   return (
-    <aside className="w-[30%] xl:w-[20%] bg-slate-600 py-5">
-      <div className='w-[90%] mx-auto'>
+    <aside className="w-[40%] xl:w-[20%] bg-slate-600 py-5">
+      <div className="w-[90%] mx-auto">
         <img
-          src="/user-demo.png"
+          src={(user && user?.photoURLL) || '/user-demo.png'}
           alt="user-profile-image"
-          className="md:w-56 md:h-56 mx-auto mt-10 bg-slate-400 rounded-xl p-5"
+          className="md:w-40 md:h-40 mx-auto mt-1 p-2 rounded-full"
         />
         <div>
           {user && user ? (
             <div className="text-center">
               <h2 className="text-2xl">{user?.displayName}</h2>
-            <small className=''>{user?.email.split("@")[0]}</small>
+              <small className="">{user?.email.split('@')[0]}</small>
             </div>
           ) : (
             <> </>

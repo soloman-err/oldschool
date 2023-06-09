@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
+import DashboardLayout from '../layout/DashboardLayout';
 import ErrorLayout from '../layout/ErrorLayout';
-import ProfileLayout from '../layout/ProfileLayout';
 import Root from '../layout/Root';
 import Blog from '../pages/blog/Blog';
 import Courses from '../pages/courses/Courses';
@@ -10,7 +10,7 @@ import Features from '../pages/features/Features';
 import Home from '../pages/home/home/Home';
 import Login from '../pages/login/Login';
 import Signup from '../pages/signup/Signup';
-import Profile from '../shared/profile/Profile';
+import Dashboard from '../shared/dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -27,9 +27,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/profile',
-    element: <ProfileLayout></ProfileLayout>,
-    children: [{ path: '/profile', element: <Profile></Profile> }],
+    path: '/dashboard',
+    element: <DashboardLayout></DashboardLayout>,
+    children: [{ path: '/dashboard', element: <Dashboard></Dashboard> }],
   },
   {
     path: '*',

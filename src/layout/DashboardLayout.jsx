@@ -1,22 +1,22 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Aside from '../shared/dashboard/Aside';
 import Footer from '../shared/footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
-import Aside from '../shared/profile/Aside';
 
-const ProfileLayout = () => {
+const DashboardLayout = () => {
   return (
     <div>
       <Navbar />
       <section className="flex flex-row h-full">
-        <Aside/>
-        <main>
+        <Aside />
+        <main className="w-full">
           <Outlet />
         </main>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
 
-export default ProfileLayout;
+export default DashboardLayout;
