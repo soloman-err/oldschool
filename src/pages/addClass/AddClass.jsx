@@ -37,7 +37,7 @@ const AddClass = () => {
                 <label className="label">
                   <span className="label-text">Class Image</span>
                 </label>
-                <input type="file" className="file-input w-full max-w-xs rounded-sm " />
+                <input type="file" className="file-input w-full max-w-xs rounded input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
