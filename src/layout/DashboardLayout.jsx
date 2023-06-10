@@ -8,12 +8,14 @@ const DashboardLayout = () => {
   return (
     <div>
       <Navbar />
+
       <section className="flex flex-row h-full">
         <Aside />
-        <main className="w-full">
+        <main className="w-full h-full">
           <Outlet />
         </main>
       </section>
+
       <Footer />
     </div>
   );

@@ -8,7 +8,7 @@ const Navbar = () => {
     { name: 'Home', to: '/' },
     { name: 'Classes', to: '/classes' },
     { name: 'Instructors', to: '/instructors' },
-    { name: 'Add A Class', to: '/addClass' },
+    { name: 'Contact', to: '/contact' },
     { name: 'Dashboard', to: '/dashboard' },
   ];
 
@@ -141,7 +141,7 @@ const Navbar = () => {
                 src={user?.photoURL || '/user-demo.png'}
                 title={user?.displayName}
                 alt="user-image"
-                className="w-10 h-10 rounded-full m-1"
+                className="w-8 h-8 rounded-full m-1"
               />
             </Link>
             <span className="w-[2px] h-6 bg-slate-400"></span>

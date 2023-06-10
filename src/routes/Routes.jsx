@@ -2,9 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../layout/DashboardLayout';
 import ErrorLayout from '../layout/ErrorLayout';
 import Root from '../layout/Root';
-import AddClass from '../pages/addClass/AddClass';
 import Blog from '../pages/blog/Blog';
 import Classes from '../pages/classes/Classes';
+import Contact from '../pages/contact/Contact';
 import Error from '../pages/error/Error';
 import Home from '../pages/home/home/Home';
 import Instructors from '../pages/instructors/Instructors';
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home></Home> },
       { path: '/classes', element: <Classes></Classes> },
       { path: '/instructors', element: <Instructors></Instructors> },
-      { path: '/addClass', element: <AddClass></AddClass> },
+      { path: '/contact', element: <Contact></Contact> },
       { path: '/blog', element: <Blog></Blog> },
       { path: '/login', element: <Login></Login> },
       { path: '/signup', element: <Signup></Signup> },

@@ -1,12 +1,12 @@
 import { curveCardinal } from 'd3-shape';
 import React from 'react';
 import {
-    Area,
-    AreaChart,
-    CartesianGrid,
-    Tooltip,
-    XAxis,
-    YAxis
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Tooltip,
+  XAxis,
+  YAxis
 } from 'recharts';
 
 const Chart = () => {
@@ -59,7 +59,7 @@ const Chart = () => {
 
   return (
       <AreaChart
-        width={500}
+        width={300}
         height={400}
         data={data}
         margin={{
