@@ -9,7 +9,7 @@ const Profile = () => {
       <Helmet>
         <title>oldschool | profile</title>
       </Helmet>
-      <section className="w-[80%] mx-auto mt-10 md:mt-20">
+      <section className="w-[80%] mx-auto">
         <div className="flex">
           <div className="bg-zinc-200 w-1/2 p-5">
             <div className="text-center w-[90%] mx-auto">
@@ -32,7 +32,7 @@ const Profile = () => {
           </div>
           <div className="bg-zinc-400 w-1/2"></div>
         </div>
-        <div className="bg-indigo-900 h-20 flex justify-center items-center gap-5 text-3xl">
+        <div className="bg-indigo-950 h-20 flex justify-center items-center gap-5 text-3xl text-white">
           <Link to={'https://twitter.com'}>
             <FaTwitter />
           </Link>

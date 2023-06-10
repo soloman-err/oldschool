@@ -2,14 +2,14 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import { Helmet } from 'react-helmet-async';
 import { FaArrowRight } from 'react-icons/fa';
-import Aside from './Aside';
-import Chart from './Chart';
+import Aside from '../aside/Aside';
+import Chart from '../chart/Chart';
 
-const Dashboard = () => {
+const Analytics = () => {
   return (
     <section className="">
       <Helmet>
-        <title>oldschool | Dashboard</title>
+        <title>oldschool | Analytics</title>
       </Helmet>
 
       <div className="drawer lg:drawer-open">
@@ -84,4 +84,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Analytics;

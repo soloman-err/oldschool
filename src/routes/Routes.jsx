@@ -5,13 +5,16 @@ import Root from '../layout/Root';
 import Blog from '../pages/blog/Blog';
 import Classes from '../pages/classes/Classes';
 import Contact from '../pages/contact/Contact';
+import AllUsers from '../pages/dashboard/allUsers/AllUsers';
+// import Analytics from '../pages/dashboard/analytics/analytics';
+import AddClass from '../pages/dashboard/addClass/AddClass';
+import MyClasses from '../pages/dashboard/myClasses/MyClasses';
+import Profile from '../pages/dashboard/profile/Profile';
 import Error from '../pages/error/Error';
 import Home from '../pages/home/home/Home';
 import Instructors from '../pages/instructors/Instructors';
 import Login from '../pages/login/Login';
 import SignUp from '../pages/signup/Signup';
-import Dashboard from '../shared/dashboard/Dashboard';
-import Profile from '../shared/profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -25,13 +28,18 @@ const router = createBrowserRouter([
       { path: '/blog', element: <Blog></Blog> },
       { path: '/login', element: <Login></Login> },
       { path: '/signup', element: <SignUp></SignUp> },
-      { path: '/profile', element: <Profile></Profile> },
     ],
   },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     element: <DashboardLayout></DashboardLayout>,
-    children: [{ path: '/dashboard', element: <Dashboard></Dashboard> }],
+    children: [
+      { path: 'profile', element: <Profile></Profile> },
+      // { path: 'analytics', element: <Analytics></Analytics> },
+      { path: 'all-users', element: <AllUsers></AllUsers> },
+      { path: 'add-class', element: <AddClass></AddClass> },
+      { path: 'my-classes', element: <MyClasses></MyClasses> },
+    ],
   },
   {
     path: '*',

@@ -44,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex flex-row justify-between md:px-2 items-center border-b sticky top-0 bg-white py-3 z-10">
+    <div className="navbar flex flex-row justify-between md:px-2 items-center border-b sticky top-0 bg-white py-3 z-50">
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
