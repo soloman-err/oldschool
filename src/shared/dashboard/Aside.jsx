@@ -117,7 +117,7 @@ const Aside = () => {
     // </aside>
     <aside className="drawer-side">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-      <div className="w-[70%] md:w-full bg-slate-600 py-5 menu p-4 h-full space-y-2 mt-20 md:mt-0">
+      <div className="w-[70%] md:w-full bg-slate-800 text-white py-5 menu p-4 h-full space-y-2 mt-20 md:mt-0">
         <div className="w- mx-auto">
           <img
             src={(user && user?.photoURL) || '/user-demo.png'}
@@ -128,18 +128,19 @@ const Aside = () => {
             {user && user ? (
               <div className="text-center">
                 <h2 className="text-2xl">{user?.displayName}</h2>
-                <small className="">{user?.email.split('@')[0]}</small>
+                <small className="">{user?.role || user?.email.split('@')[0]}</small>
               </div>
             ) : (
               <> </>
             )}
           </div>
         </div>
-        <div>
-          <ul className="mx-auto mt-5 space-y-1">
+
+        <div className='mx-auto mt-5 w-full'>
+          <ul className="space-y-1">
             <li className="rounded bg-slate-500">
               <Link
-                to={'/'}
+                to={'/profile'}
                 className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
               >
                 <FaUser size={20} />
@@ -148,7 +149,7 @@ const Aside = () => {
             </li>
             <li className="rounded bg-slate-500">
               <Link
-                to={'/'}
+                to={'/addClass'}
                 className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
               >
                 <FaBook size={20} /> Add a class
@@ -156,14 +157,14 @@ const Aside = () => {
             </li>
             <li className="rounded bg-slate-500">
               <Link
-                to={'/'}
+                to={'/myClasses'}
                 className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
               >
                 <MdTableChart size={20} /> My classes
               </Link>
             </li>
           </ul>
-          <span className="divider"></span>
+          <div className="divider"></div>
           <ul className="mx-auto mt-1 space-y-1">
             <li className="w-full rounded bg-slate-500">
               <Link
@@ -175,7 +176,7 @@ const Aside = () => {
             </li>
             <li className="w-full rounded bg-slate-500">
               <Link
-                to={'/'}
+                to={'/settings'}
                 className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
               >
                 <IoMdSettings size={20} /> Settings
@@ -183,9 +184,9 @@ const Aside = () => {
             </li>
             <li className="w-full rounded bg-slate-500">
               <Link
-                to={'/'}
+                to={''}
                 className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                // onClick={handleLogOut}
+                onClick={handleLogOut}
               >
                 <FiLogOut size={20} /> Logout
               </Link>
