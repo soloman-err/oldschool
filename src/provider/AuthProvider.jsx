@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -52,12 +53,23 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        axios
+          .post('http://localhost:2000/jwt', {
+            email: currentUser.email,
+          })
+          .then((data) => {
+            localStorage.setItem('access_token', data.data);
+            setLoading(false);
+          });
+      } else {
+        localStorage.getItem('access_token');
+      }
     });
     return () => {
       return unsubscribe();
     };
-  });
+  }, []);
 
   // logging out:
   const logOut = () => {
@@ -73,7 +85,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     signIn,
     googleSignIn,
-    logOut
+    logOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -13,7 +13,6 @@ const Navbar = () => {
   ];
 
   const { user, logOut } = useAuth();
-  console.log(user?.displayName);
 
   const navigate = useNavigate();
 

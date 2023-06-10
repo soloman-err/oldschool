@@ -9,7 +9,7 @@ import Error from '../pages/error/Error';
 import Home from '../pages/home/home/Home';
 import Instructors from '../pages/instructors/Instructors';
 import Login from '../pages/login/Login';
-import Signup from '../pages/signup/Signup';
+import SignUp from '../pages/signup/Signup';
 import Dashboard from '../shared/dashboard/Dashboard';
 import Profile from '../shared/profile/Profile';
 
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       { path: '/contact', element: <Contact></Contact> },
       { path: '/blog', element: <Blog></Blog> },
       { path: '/login', element: <Login></Login> },
-      { path: '/signup', element: <Signup></Signup> },
+      { path: '/signup', element: <SignUp></SignUp> },
       { path: '/profile', element: <Profile></Profile> },
     ],
   },

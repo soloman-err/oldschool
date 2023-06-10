@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from '../login/SocialLogin';
 
-const Signup = () => {
+const SignUp = () => {
   const {
     reset,
     register,
@@ -45,7 +45,7 @@ const Signup = () => {
                   Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Your work has been saved',
+                    title: 'Welcome to oldschool!',
                     showConfirmButton: false,
                     timer: 1500,
                   });
@@ -235,4 +235,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
