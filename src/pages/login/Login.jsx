@@ -45,12 +45,12 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>oldschool | login</title>
+        <title>oldschool | Login</title>
       </Helmet>
-      <div className="flex justify-center items-center mt-20 md:mt-32 lg:mt-40">
+      <div className="flex justify-center items-center mt-5">
         <div className="">
           <form
-            className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-5 pb-8 mb-4 space-y-2"
+            className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-5 pb-8 mb-4 space-y-2 border"
             onSubmit={handleLogin}
           >
             <h1 className="text-center text-slate-800 font-bold pb-10 text-xl">
@@ -65,7 +65,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="oldschool@gmail.com"
-                className="input input-bordered input-sm rounded-md"
+                className="input input-bordered input-sm rounded"
               />
             </div>
 
@@ -77,13 +77,13 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="password"
-                className="input input-bordered input-sm rounded-md"
+                className="input input-bordered input-sm rounded"
               />
             </div>
 
             <div className="text-center pt-5">
               <button
-                className="btn btn-sm btn-wide font-bold bg-blue-500 text-white"
+                className="btn btn-sm btn-wide font-bold bg-zinc-800 text-white rounded"
                 type="submit"
               >
                 Sign In

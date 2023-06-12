@@ -9,7 +9,7 @@ const Navbar = () => {
     { name: 'Classes', to: '/classes' },
     { name: 'Instructors', to: '/instructors' },
     { name: 'Contact', to: '/contact' },
-    { name: 'Dashboard', to: '/dashboard' },
+    { name: 'Dashboard', to: '/dashboard/analytics' },
   ];
 
   const { user, logOut } = useAuth();
@@ -44,7 +44,16 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar flex flex-row justify-between md:px-2 items-center border-b sticky top-0 bg-white py-3 z-50">
+    <div className="navbar flex flex-row justify-between md:px-2 items-center border-b sticky top-0 left-0 bg-white py-3 z-50">
+      <div className="order-1 md:-order-1">
+        <Link to={'/'}>
+          <img
+            src={'/old-school-logo.png'}
+            alt=""
+            className="w-14 h-14 md:w-16 md:h-16"
+          />
+        </Link>
+      </div>
       <div className="flex">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost md:hidden">
@@ -56,76 +65,71 @@ const Navbar = () => {
           >
             {user && user ? (
               <>
-                {navigators.map((navitem, index) => (
+                {navigators.map((navItem, index) => (
                   <Link
                     key={index}
-                    to={navitem.to}
+                    to={navItem.to}
                     className={`tracking-wider ${
-                      location.pathname === navitem.to
+                      location.pathname === navItem.to
                         ? 'underline underline-offset-4'
                         : ''
                     }`}
                   >
-                    {navitem?.name}
+                    {navItem?.name}
                   </Link>
                 ))}
               </>
             ) : (
               <>
-                {navigators.slice(0, 4).map((navitem, index) => (
+                {navigators.slice(0, 5).map((navItem, index) => (
                   <Link
                     key={index}
-                    to={navitem.to}
+                    to={navItem.to}
                     className={`tracking-wider ${
-                      location.pathname === navitem.to
+                      location.pathname === navItem.to
                         ? 'underline underline-offset-4'
                         : ''
                     }`}
                   >
-                    {navitem?.name}
+                    {navItem?.name}
                   </Link>
                 ))}
               </>
             )}
           </ul>
         </div>
-        <div>
-          <Link to={'/'}>
-            <img src={'/old-school-logo.png'} alt="" className="w-16 h-16" />
-          </Link>
-        </div>
       </div>
       <div className="hidden md:flex">
-        <ul className="menu menu-horizontal gap-6 uppercase px-1 font-semibold">
+        <ul className="menu menu-horizontal gap-6 uppercase px-1 font-bold">
           {user && user ? (
             <>
-              {navigators.map((navitem, index) => (
+              {navigators.map((navItem, index) => (
                 <Link
                   key={index}
-                  to={navitem.to}
+                  to={navItem.to}
                   className={`tracking-wider ${
-                    location.pathname === navitem.to
+                    location.pathname === navItem.to
                       ? 'underline underline-offset-4'
                       : ''
                   }`}
                 >
-                  {navitem?.name}
+                  {navItem?.name}
                 </Link>
               ))}
             </>
           ) : (
             <>
-              {navigators.slice(0, 4).map((navitem, index) => (
+              {navigators.slice(0, 5).map((navItem, index) => (
                 <Link
                   key={index}
-                  to={navitem.to}
+                  to={navItem.to}
                   className={`tracking-wider ${
-                    location.pathname === navitem.to
-                      ? 'underline underline-offset-4'
+                    location.pathname === navItem.to
+                      ? 'underline underline-offset-8'
                       : ''
                   }`}
                 >
-                  {navitem?.name}
+                  {navItem?.name}
                 </Link>
               ))}
             </>
@@ -135,7 +139,7 @@ const Navbar = () => {
       <div className="flex items-center space-x-1">
         {user ? (
           <>
-            <Link to={'/profile'}>
+            <Link to={'/dashboard/profile'}>
               <img
                 src={user?.photoURL || '/user-demo.png'}
                 title={user?.displayName}
@@ -152,18 +156,25 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            {/* <div className=" border-b">
+            <div className="hidden md:flex">
+              {/* <div className=" border-b">
           <input type="text" className="input input-sm rounded-sm" />
         </div> */}
-            {/* <FaSearch size={20} /> */}
-            {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
-            <Link to={'/login'}>
-              <button className="btn btn-sm btn-ghost">login</button>
-            </Link>
-            <span className="w-[2px] h-6 bg-slate-400"></span>
-            <Link to={'/signup'}>
-              <button className="btn btn-sm btn-ghost">Register</button>
-            </Link>
+              {/* <FaSearch size={20} /> */}
+              {/* <img src="/user-demo.png" alt="user-image" className="w-9 h-9" /> */}
+              <Link to={'/login'}>
+                <button className="btn btn-sm btn-ghost rounded">login</button>
+              </Link>
+              <span className="w-[2px] h-6 bg-slate-400"></span>
+              <Link to={'/signup'}>
+                <button className="btn btn-sm btn-ghost rounded">
+                  Register
+                </button>
+              </Link>
+            </div>
+            <div className='md:hidden'>
+              <h2 className='font-bold text-xl uppercase'>oldschool</h2>
+            </div>
           </>
         )}
       </div>

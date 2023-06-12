@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import Footer from '../../../shared/footer/Footer';
 import Banner from '../banner/Banner';
 import Featured from '../featured/Featured';
 import Hero from '../hero/Hero';
@@ -11,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>oldschool | home</title>
+        <title>oldschool | Home</title>
       </Helmet>
       <Banner />
       {/* <StickySidebar/> */}
@@ -19,7 +18,6 @@ const Home = () => {
       <PopularClasses />
       <Featured />
       <PopularInstructors/>
-      <Footer/>
     </div>
   );
 };

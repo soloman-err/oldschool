@@ -3,31 +3,35 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="footer p-5 md:p-10 lg:p-20 xl:px-40 text-white bg-slate-950">
+    <footer className="mt-auto">
+      <div className="footer p-5 md:p-10 lg:p-20 xl:px-40 text-white bg-zinc-950">
         <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <span className="footer-title">About</span>
+          <Link to={"contact"}><span className="link link-hover">Contact us</span></Link>
+          <Link to={"about-us"}><span className="link link-hover">About us</span></Link>
+          <Link to={"exams"}><span className="link link-hover">Exams</span></Link>
+          <Link to={"address"}><span className="link link-hover">Address</span></Link>
         </div>
+        
         <div>
-          <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <span className="footer-title">Events</span>
+          <Link to={"activities"}><span className="link link-hover">Activities</span></Link>
+          <Link to={"awards"}><span className="link link-hover">Awards</span></Link>
+          <Link to={"ceremony"}><span className="link link-hover">Ceremony</span></Link>
+          <Link to={"farewell"}><span className="link link-hover">Farewell</span></Link>
         </div>
+        
         <div>
           <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <Link to={"join-oldschool"}><span className="link link-hover">Join us</span></Link>
+          <Link to={"terms-of-use"}><span className="link link-hover">Terms of use</span></Link>
+          <Link to={"privacy-policy"}><span className="link link-hover">Privacy policy</span></Link>
+          <Link to={"cookie-policy"}><span className="link link-hover">Cookie policy</span></Link>
         </div>
-        <div className='w-full'>
+        
+        <div className="w-full">
           <span className="footer-title">Newsletter</span>
-          <div className="form-control w-full">
+          <div className="form-control w-[80%] md:w-full">
             <label className="label">
               <span className="">Enter your email address</span>
             </label>
@@ -44,8 +48,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="footer-center p-4 bg-slate-900 text-white">
-        <span className='text-sm'>Copyright © 2023 - All right reserved<Link to={"/"}> OLDSCHOOL</Link></span>
+      <div className="footer-center p-4 bg-zinc-900 text-white">
+        <span className="text-xs md:text-sm">
+          Copyright © 2023 - All right reserved<Link to={'/'}> OLDSCHOOL</Link>
+        </span>
       </div>
     </footer>
   );

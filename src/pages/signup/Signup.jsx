@@ -66,15 +66,15 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>oldschool | register</title>
+        <title>oldschool | Register</title>
       </Helmet>
-      <div className="flex justify-center items-center mt-24 md:mt-32 h-screen ">
+      <div className="flex justify-center items-center mt-5">
         <div className="">
           <form
-            className="w-full bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-1"
+            className="w-full bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-1 border"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1 className="text-center text-slate-800 font-bold pb-5 text-lg">
+            <h1 className="text-center text-zinc-900 font-bold pb-5 text-lg">
               Please Register
             </h1>
 
@@ -94,7 +94,7 @@ const SignUp = () => {
                     name="name"
                     {...register('name', { required: true })}
                     placeholder="name"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                     required
                   />
                 </div>
@@ -112,7 +112,7 @@ const SignUp = () => {
                     name="email"
                     {...register('email', { required: true })}
                     placeholder="oldschool@gmail.com"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                     required
                   />
                 </div>
@@ -129,7 +129,7 @@ const SignUp = () => {
                     name="password"
                     {...register('password', { required: true })}
                     placeholder="password"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                     required
                   />
                 </div>
@@ -146,7 +146,7 @@ const SignUp = () => {
                     name="confirmPassword"
                     {...register('confirmPassword', { required: true })}
                     placeholder="confirm password"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                     required
                   />
                 </div>
@@ -166,7 +166,7 @@ const SignUp = () => {
                     name="photoURL"
                     {...register('photoURL', { required: true })}
                     placeholder="http://image.jpg"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                     required
                   />
                 </div>
@@ -174,7 +174,7 @@ const SignUp = () => {
                   <label className="label">
                     <span className="label-text-alt">Gender</span>
                   </label>
-                  <select className="input input-bordered input-sm rounded-md">
+                  <select className="input input-bordered input-sm rounded">
                     <option value="">Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -191,7 +191,7 @@ const SignUp = () => {
                     {...register('phone')}
                     // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                     placeholder="+012-345-6789"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                   />
                 </div>
                 <div className="form-control">
@@ -203,7 +203,7 @@ const SignUp = () => {
                     name="text"
                     {...register('address')}
                     placeholder="address"
-                    className="input input-bordered input-sm rounded-md"
+                    className="input input-bordered input-sm rounded"
                   />
                 </div>
               </div>
@@ -211,7 +211,7 @@ const SignUp = () => {
 
             <div className="text-center pt-5">
               <button
-                className="btn btn-sm btn-wide font-bold bg-blue-500 text-white"
+                className="btn btn-sm btn-wide font-bold bg-zinc-800 text-white rounded"
                 type="submit"
               >
                 Register
@@ -222,6 +222,7 @@ const SignUp = () => {
               <span className="label-text-alt">
                 Already have an account?
                 <Link to={'/login'} className="text-blue-800">
+                  {" "}
                   Login
                 </Link>
               </span>

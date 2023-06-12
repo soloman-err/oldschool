@@ -6,15 +6,21 @@ const PopularClasses = () => {
   return (
     <section className="flex flex-col justify-between mt-20 w-[90%] mx-auto border- pr-2">
       <h1 className="text-3xl md:text-4xl font-bold text-center">
-        Pop<span className="border-b-4 border-blue-900">ular Classes</span>
+        Pop<span className="border-b-4 border-zinc-900">ular Classes</span>
       </h1>
-      <div className="space-y-10 mt-8">
-      <LeftCard/>
-      <RightCard/>
-      <LeftCard/>
-      <RightCard/>
-      <LeftCard/>
-      <RightCard/>
+      <div className="space-y-6 md:space-y-20 mt-8">
+        <LeftCard />
+        <div className="flex justify-end">
+          <RightCard />
+        </div>
+        <LeftCard />
+        <div className="flex justify-end">
+          <RightCard />
+        </div>
+        <LeftCard />
+        <div className="flex justify-end">
+          <RightCard />
+        </div>
       </div>
 
       {/* <div className="mt-10 md:mt-0">

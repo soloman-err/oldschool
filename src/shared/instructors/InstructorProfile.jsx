@@ -1,26 +1,25 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-  FaUser,
+    FaFacebook,
+    FaInstagram,
+    FaLinkedin,
+    FaTwitter,
+    FaUser,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
-const Profile = () => {
+const InstructorProfile = () => {
   const { user } = useAuth();
-  console.log(user);
 
   return (
-    <>
+    <section>
       <Helmet>
-        <title>oldschool | profile</title>
+        <title>oldschool | Instructor-profile</title>
       </Helmet>
 
-      <section className="w-[90%] my-5 md:w-[80%] mx-auto">
+      <div className="w-[90%] my-5 md:w-[80%] mx-auto">
         <div className="flex flex-col md:flex-row border divide-x-2 bg-zinc-50">
           <div className="w-full">
             <div className="relative text-center mx-auto">
@@ -42,20 +41,17 @@ const Profile = () => {
 
             <div className="py-10 px-4">
               <h2 className="text-2xl font-bold">Antonio Joseph</h2>
-              <div className="flex flex-row items-center gap-2 mb-2">
-                <span className="opacity-80 text-sm tracking-wide font-bold bg-sky-50 border border-slate-400 px-2 rounded-full">
+              <div className="flex flex-row gap-2 mb-2">
+                <span className="opacity-80 font-bold bg-sky-50 border border-slate-400 px-2 rounded-full">
                   Instructor
                 </span>
                 <span className="flex items-center gap-1 font-bold text-sky-500">
                   <FaUser />
-                  129 Followers
+                  10k
                 </span>
               </div>
               <hr />
-              <div className="mt-5 text-sm">
-                <p className="">
-                  <span className="font-bold">Subject: </span>Biology
-                </p>
+              <div className="mt-5">
                 <p className="">
                   <span className="font-bold">Total Classes: </span>78
                 </p>
@@ -63,21 +59,17 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="w-full p-4 text-sm">
-            <h3 className="text-xl font-bold underline underline-offset-4 pb-2">About Info:</h3>
-            <p className="">
-              <span className="font-bold">Blood: </span>A-
-            </p>
-            <p className="">
-              <span className="font-bold">Email: </span>antonio.j@gmail.com
-            </p>
-            <p className="">
-              <span className="font-bold">Bio: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempore.
+          <div className="w-full p-4">
+            <h3 className="text-xl font-bold">About Me</h3>
+            <p className="text-slate-700 opacity-90">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+              illum veritatis illo voluptatem omnis iusto veniam modi possimus
+              hic placeat ratione doloribus repellendus.
             </p>
           </div>
         </div>
 
-        <div className="bg-zinc-900 border border-t-0 py-5 flex justify-center items-center gap-5 text-xl text-white">
+        <div className="bg-zinc-900 py-5 flex justify-center items-center gap-5 text-xl text-white">
           <Link to={'https://twitter.com'}>
             <FaTwitter />
           </Link>
@@ -91,9 +83,9 @@ const Profile = () => {
             <FaInstagram />
           </Link>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
-export default Profile;
+export default InstructorProfile;

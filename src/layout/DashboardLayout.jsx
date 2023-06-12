@@ -1,157 +1,227 @@
 import { FaArrowRight, FaBook, FaHome, FaUser, FaUsers } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
-import { IoMdSettings } from 'react-icons/io';
+import { IoMdDocument, IoMdLogIn, IoMdSettings } from 'react-icons/io';
 import { MdDisabledByDefault, MdTableChart } from 'react-icons/md';
-import { Link, Outlet } from 'react-router-dom';
+import { TbAdjustmentsHorizontal } from 'react-icons/tb';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAuth from '../hooks/useAuth';
 import Footer from '../shared/footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
 
 const DashboardLayout = () => {
   const { user, logOut, setLoading } = useAuth();
+  const navigate = useNavigate();
 
+  // exit aside-menu:
   const closeDrawer = () => {
-
-    // exit menu func:
     const checkbox = document.getElementById('my-drawer-2');
     if (checkbox) {
       checkbox.checked = false;
     }
   };
 
+  // logout:
+  const handleLogOut = () => {
+    try {
+      if (user) {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You'll be logged out!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Log Out!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Logged Out',
+              'Thank you for being with oldschool',
+              'success'
+            );
+            logOut();
+            navigate('/');
+          }
+        });
+      } else {
+        Swal.fire({
+          title: 'Please login first!',
+          icon: 'warning',
+          confirmButtonText: 'login',
+          showCancelButton: true,
+          cancelButtonColor: '#d33',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate('/login');
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error?.message);
+    }
+  };
+
   return (
-    <>
-      <Navbar />
+    <div className="flex flex-col min-h-screen">
+      <>
+        <Navbar />
 
-      <div className="drawer lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
-          {/* Page content here */}
-          <label
-            htmlFor="my-drawer-2"
-            className="drawer-button md:hidden bg-slate-900 text-white p-2 btn mr-auto mt-1 ml-1 rounded-sm btn-sm"
-          >
-            <FaArrowRight width={200} />
-          </label>
-
-          <Outlet />
-        </div>
-
-        {/* drawer-side-menu */}
-        <div className="drawer-side bg-slate-900 h-full text-white z-10">
-          <div className="men w-[80%] md:w-full bg-slate-800 text-white py-5 p-5 h-ful space-y-2 mt-20 md:mt-0">
+        <div className="drawer md:drawer-open">
+          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content overflow-y-auto flex flex-col md:px-10">
+            {/* Page content here */}
             <label
               htmlFor="my-drawer-2"
-              className="drawer-close justify-end flex md:hidden"
+              className="drawer-button md:hidden bg-zinc-900 text-white p-2 btn mr-auto mt-1 ml-1 rounded-sm btn-sm"
             >
-              <MdDisabledByDefault size={30} />
+              <FaArrowRight width={200} />
             </label>
 
-            <div className="w- mx-auto">
-              <img
-                src={(user && user?.photoURL) || '/user-demo.png'}
-                alt="user-profile-image"
-                className="md:w-40 md:h-40 mx-auto mt-1 p-2 rounded-full"
-              />
-              <div>
-                {user && user ? (
-                  <div className="text-center">
-                    <h2 className="text-2xl">{user?.displayName}</h2>
-                    <p className="">
-                      {user?.role || user?.email.split('@')[0]}
-                    </p>
-                  </div>
-                ) : (
-                  <> </>
-                )}
+            <Outlet />
+          </div>
+
+          {/* drawer-side-menu */}
+          <div className="drawer-side bg-zinc-950 h-full text-white z-10">
+            <div className="w-[80%] md:w-full text-white pt-5 p-5 h-full space-y-2 mt-20 md:mt-0 border-r border-zinc-800">
+              <label
+                htmlFor="my-drawer-2"
+                className="drawer-close justify-end flex md:hidden"
+              >
+                <MdDisabledByDefault size={30} className="" />
+              </label>
+              <div className="md:hidden text-center">
+                <img
+                  src="/user-demo.png"
+                  alt="user-placeholder-image"
+                  className="w-20 mx-auto"
+                />
+                <p className="text-lg">{user?.displayName || 'Antonio'}</p>
               </div>
+
+              <div className="mx-auto pb-5">
+                <div>
+                  {user && user ? (
+                    <div className="">
+                      <h2 className="text-2xl">{user?.displayName}</h2>
+                      <p className="">{user?.role || user?.email}</p>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+
+              {/* Sidebar content */}
+              <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+              <ul className="w-full h-full space-y-2">
+                <li className="rounded bg-zinc-700">
+                  <Link
+                    to={'profile'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <FaUser size={15} />
+                    My Profile
+                    <span className="badge badge-sm ml-auto bg-green-300 border-none">
+                      {'admin'}
+                    </span>
+                  </Link>
+                </li>
+                <li className="rounded bg-zinc-700">
+                  <Link
+                    to={'add-class'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <FaBook size={15} /> Add a class
+                  </Link>
+                </li>
+                <li className="rounded bg-zinc-700">
+                  <Link
+                    to={'my-classes'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <MdTableChart size={15} /> My classes
+                  </Link>
+                </li>
+                <li className="rounded bg-zinc-700">
+                  <Link
+                    to={'all-users'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <FaUsers size={15} /> All users
+                  </Link>
+                </li>
+                <li className="rounded bg-zinc-700">
+                  <Link
+                    to={'analytics'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <TbAdjustmentsHorizontal size={15} /> Analytics
+                  </Link>
+                </li>
+
+                <div className="divider"></div>
+
+                <li className="w-full rounded bg-zinc-700">
+                  <Link
+                    to={'/'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <FaHome size={15} /> Home
+                  </Link>
+                </li>
+                <li className="w-full rounded bg-zinc-700">
+                  <Link
+                    to={'/settings'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <IoMdSettings size={15} /> Settings
+                  </Link>
+                </li>
+                <li className="w-full rounded bg-zinc-700">
+                  <Link
+                    to={'/login'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <IoMdLogIn size={15} /> Login
+                  </Link>
+                </li>
+                <li className="w-full rounded bg-zinc-700">
+                  <Link
+                    to={'/signup'}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    onClick={closeDrawer}
+                  >
+                    <IoMdDocument size={15} /> Register
+                  </Link>
+                </li>
+                <li className="w-full rounded bg-zinc-700">
+                  <Link
+                    to={''}
+                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                    // onClick={closeDrawer}
+                    onClick={handleLogOut}
+                  >
+                    <FiLogOut size={15} /> Logout
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-            <ul className="w-full h-full space-y-2">
-              {/* Sidebar content here */}
-              <li className="rounded bg-slate-500">
-                <Link
-                  to={'profile'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <FaUser size={20} />
-                  My Profile
-                </Link>
-              </li>
-              <li className="rounded bg-slate-500">
-                <Link
-                  to={'add-class'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <FaBook size={20} /> Add a class
-                </Link>
-              </li>
-              <li className="rounded bg-slate-500">
-                <Link
-                  to={'my-classes'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <MdTableChart size={20} /> My classes
-                </Link>
-              </li>
-              <li className="rounded bg-slate-500">
-                <Link
-                  to={'all-users'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <FaUsers size={20} /> All users
-                </Link>
-              </li>
-              <div className="divider"></div>
-              <li className="w-full rounded bg-slate-500">
-                <Link
-                  to={'/'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <FaHome size={20} /> Home
-                </Link>
-              </li>
-              <li className="w-full rounded bg-slate-500">
-                <Link
-                  to={'settings'}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                >
-                  <IoMdSettings size={20} /> Settings
-                </Link>
-              </li>
-              <li className="w-full rounded bg-slate-500">
-                <Link
-                  to={''}
-                  className="flex flex-row gap-2 md:text-xl p-1 md:p-2 items-center"
-                  onClick={closeDrawer}
-                  // onClick={handleLogOut}
-                >
-                  <FiLogOut size={20} /> Logout
-                </Link>
-              </li>
-            </ul>
           </div>
         </div>
+      </>
+      <div className="mt-auto">
+        <Footer />
       </div>
-      <Footer />
-    </>
-    // <div>
-    //   <Navbar />
-
-    //   <section className="flex flex-row h-full">
-    //     <Aside />
-    //     <main className="w-full h-full">
-    //       <Outlet />
-    //     </main>
-    //   </section>
-
-    // </div>
+    </div>
   );
 };
 
