@@ -14,7 +14,6 @@ const AllUsers = () => {
 
   const { data: users = [], refetch } = useQuery(['users'], async () => {
     const res = await axiosSecure.get('/users');
-    // console.log(res.data);
     return res.data;
   });
 
@@ -30,14 +29,11 @@ const AllUsers = () => {
       confirmButtonText: 'Yes, make admin',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2000/users/admin/${user?._id}`, {
-          method: 'PATCH',
-        })
-          .then((res) => res.json())
-          .then((data) => {
+        axiosSecure
+          .patch(`/users/admin/${user?._id}`)
+          .then((res) => {
             refetch();
-            console.log(data);
-            if (data.modifiedCount > 0) {
+            if (res.data.modifiedCount > 0) {
               Swal.fire(
                 'Success!',
                 `${user?.name} has been made an admin.`,
@@ -64,21 +60,28 @@ const AllUsers = () => {
     // }
   };
 
-  const handleDelete = (user) => {};
+  const handleDelete = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          console.log('deleted response', res?.data);
 
-  // users:
-  // const users = [
-  //   { name: 'John', email: 'john@gmail.com' },
-  //   { name: 'Mariana', email: 'mariana@gmail.com' },
-  //   { name: 'Ëma', email: 'éma@gmail.com' },
-  //   { name: 'Celia', email: 'celia@gmail.com' },
-  //   { name: 'James', email: 'james@gmail.com' },
-  //   { name: 'Ralf', email: 'ralf@gmail.com' },
-  //   { name: 'Zach', email: 'zach@gmail.com' },
-  //   { name: 'Martin', email: 'martin@gmail.com' },
-  //   { name: 'Jack', email: 'jack@gmail.com' },
-  //   { name: 'Solo', email: 'solo@gmail.com' },
-  // ];
+          refetch();
+          if (res?.data?.deletedCount > 0) {
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
