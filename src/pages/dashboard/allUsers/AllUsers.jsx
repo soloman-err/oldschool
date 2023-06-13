@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import ButtonWide from '../../../components/buttonWide/ButtonWide';
 import PageTitle from '../../../components/pageTitle/PageTitle';
@@ -33,7 +33,7 @@ const AllUsers = () => {
           .patch(`/users/admin/${user?._id}`)
           .then((res) => {
             refetch();
-            if (res.data.modifiedCount > 0) {
+            if (res.data?.modifiedCount > 0) {
               Swal.fire(
                 'Success!',
                 `${user?.name} has been made an admin.`,
@@ -60,6 +60,43 @@ const AllUsers = () => {
     // }
   };
 
+  // Make an Instructor:
+  const handleMakeInstructor = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `${user?.name} will be an Instructor!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, make Instructor',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .patch(`/users/instructor/${user?._id}`)
+          .then((res) => {
+            refetch();
+            if (res.data?.modifiedCount > 0) {
+              Swal.fire(
+                'Success!',
+                `${user?.name} has been made an Instructor!.`,
+                'success'
+              );
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            Swal.fire(
+              'Error!',
+              'An error occurred while making the user an admin.',
+              'error'
+            );
+          });
+      }
+    });
+  };
+
+  // Delete an user:s
   const handleDelete = (user) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -68,14 +105,14 @@ const AllUsers = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, delete!',
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/users/${user._id}`).then((res) => {
           console.log('deleted response', res?.data);
 
           refetch();
-          if (res?.data?.deletedCount > 0) {
+          if (res.data?.deletedCount > 0) {
             Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
           }
         });
@@ -105,7 +142,7 @@ const AllUsers = () => {
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Role</th>
+              <th className="text-center">Role</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -126,15 +163,17 @@ const AllUsers = () => {
                   </td>
                   <td className="opacity-90">{user?.email}</td>
 
-                  <td>
+                  <td className="flex flex-row gap-2">
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="badge badge-info text-white capitalize border-none"
+                      className="btn btn-sm text-xs capitalize border-none"
+                      disabled={user?.role === 'admin' && true}
                     >
-                      {user?.role === 'admin' ? 'Admin' : <FaUserShield />}
+                      {user?.role === 'admin' ? 'Admin' : 'Make Admin'}
                     </button>
 
-                    {/* {showSelect ? (
+                    <>
+                      {/* {showSelect ? (
                       <select
                         value={selectedRole}
                         onChange={(e) => setSelectedRole(e.target.value)}
@@ -147,6 +186,16 @@ const AllUsers = () => {
                     ) : (
                       <>{user?.role}</>
                     )} */}
+                    </>
+                    <button
+                      onClick={() => handleMakeInstructor(user)}
+                      className="btn btn-sm text-xs capitalize border-none"
+                      disabled={user?.role === 'instructor' && true}
+                    >
+                      {user?.role === 'instructor'
+                        ? 'Instructor'
+                        : 'Make Instructor'}
+                    </button>
                   </td>
 
                   <th>
