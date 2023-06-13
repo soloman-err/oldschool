@@ -1,30 +1,32 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
 import ButtonWide from '../../../components/buttonWide/ButtonWide';
 import PageTitle from '../../../components/pageTitle/PageTitle';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
-  // const [axiosSecure] = useAxiosSecure();
-  // const { data: users = [], refetch } = useQuery(['users'], async () => {
-  //   const res = await axiosSecure.get('/users');
-  //   console.log(res.data);
-  //   return res.data;
-  // });
+  const [axiosSecure] = useAxiosSecure();
+  const { data: users = [], refetch } = useQuery(['users'], async () => {
+    const res = await axiosSecure.get('/users');
+    console.log(res.data);
+    return res.data;
+  });
 
   // users:
-  const users = [
-    { name: 'John', email: 'john@gmail.com' },
-    { name: 'Mariana', email: 'mariana@gmail.com' },
-    { name: 'Ëma', email: 'éma@gmail.com' },
-    { name: 'Celia', email: 'celia@gmail.com' },
-    { name: 'James', email: 'james@gmail.com' },
-    { name: 'Ralf', email: 'ralf@gmail.com' },
-    { name: 'Zach', email: 'zach@gmail.com' },
-    { name: 'Martin', email: 'martin@gmail.com' },
-    { name: 'Jack', email: 'jack@gmail.com' },
-    { name: 'Solo', email: 'solo@gmail.com' },
-  ];
+  // const users = [
+  //   { name: 'John', email: 'john@gmail.com' },
+  //   { name: 'Mariana', email: 'mariana@gmail.com' },
+  //   { name: 'Ëma', email: 'éma@gmail.com' },
+  //   { name: 'Celia', email: 'celia@gmail.com' },
+  //   { name: 'James', email: 'james@gmail.com' },
+  //   { name: 'Ralf', email: 'ralf@gmail.com' },
+  //   { name: 'Zach', email: 'zach@gmail.com' },
+  //   { name: 'Martin', email: 'martin@gmail.com' },
+  //   { name: 'Jack', email: 'jack@gmail.com' },
+  //   { name: 'Solo', email: 'solo@gmail.com' },
+  // ];
 
   return (
     <div>

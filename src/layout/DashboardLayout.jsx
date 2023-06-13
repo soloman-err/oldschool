@@ -5,11 +5,13 @@ import { MdDisabledByDefault, MdTableChart } from 'react-icons/md';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
 import Footer from '../shared/footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
 
 const DashboardLayout = () => {
+  const [isAdmin] = useAdmin();
   const { user, logOut, setLoading } = useAuth();
   const navigate = useNavigate();
 
@@ -70,7 +72,6 @@ const DashboardLayout = () => {
         <div className="drawer md:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content overflow-y-auto flex flex-col md:px-10">
-            {/* Page content here */}
             <label
               htmlFor="my-drawer-2"
               className="drawer-button md:hidden bg-zinc-900 text-white p-2 btn mr-auto mt-1 ml-1 rounded-sm btn-sm"
@@ -78,6 +79,7 @@ const DashboardLayout = () => {
               <FaArrowRight width={200} />
             </label>
 
+            {/* Page content */}
             <Outlet />
           </div>
 
@@ -92,11 +94,10 @@ const DashboardLayout = () => {
               </label>
               <div className="md:hidden text-center">
                 <img
-                  src="/user-demo.png"
+                  src={user?.photoURL || '/user-demo.png'}
                   alt="user-placeholder-image"
-                  className="w-20 mx-auto"
+                  className="w-16 mx-aut rounded-full"
                 />
-                <p className="text-lg">{user?.displayName || 'Antonio'}</p>
               </div>
 
               <div className="mx-auto pb-5">

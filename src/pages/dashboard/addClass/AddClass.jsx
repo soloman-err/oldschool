@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 import PageTitle from '../../../components/pageTitle/PageTitle';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -11,7 +12,8 @@ const AddClass = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
-  const img_hosting_url = `http://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+  // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -32,6 +34,7 @@ const AddClass = () => {
             price,
             available_seats,
           } = data;
+          console.log(data);
 
           const newClass = {
             iName: instructor_name,
@@ -155,9 +158,11 @@ const AddClass = () => {
           />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-sm btn-wider bg-zinc-950 rounded btn-neutral">
-            Publish
-          </button>
+          <input
+            type="submit"
+            value="Publish"
+            className="btn btn-sm btn-wider bg-zinc-950 rounded btn-neutral"
+          />
         </div>
       </form>
     </>

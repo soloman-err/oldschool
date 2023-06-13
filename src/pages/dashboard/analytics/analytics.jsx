@@ -1,5 +1,4 @@
 import React from 'react';
-import Marquee from 'react-fast-marquee';
 import { Helmet } from 'react-helmet-async';
 import Chart from './Chart';
 
@@ -55,13 +54,6 @@ const Analytics = () => {
 
             <div className="bg-zinc-900 m-3 p-3 rounded">
               <Chart />
-            </div>
-
-            <div className="text-white bg-zinc-900 m-3 p-2 gap-3 flex rounded">
-              <Marquee>
-                "The best time to plant a tree was 20 years ago. The second best
-                time is now." - Chinese Proverb
-              </Marquee>
             </div>
           </div>
         </div>

@@ -78,10 +78,11 @@ const Navbar = () => {
                     {navItem?.name}
                   </Link>
                 ))}
+                <Link onClick={handleLogOut}>Logout</Link>
               </>
             ) : (
               <>
-                {navigators.slice(0, 5).map((navItem, index) => (
+                {navigators.slice(0, 4).map((navItem, index) => (
                   <Link
                     key={index}
                     to={navItem.to}
@@ -94,6 +95,8 @@ const Navbar = () => {
                     {navItem?.name}
                   </Link>
                 ))}
+                <Link to={'/login'}>Login</Link>
+                <Link to={'/signup'}>Register</Link>
               </>
             )}
           </ul>
@@ -119,7 +122,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              {navigators.slice(0, 5).map((navItem, index) => (
+              {navigators.slice(0, 4).map((navItem, index) => (
                 <Link
                   key={index}
                   to={navItem.to}
@@ -138,7 +141,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center space-x-1">
         {user ? (
-          <>
+          <div className="hidden md:flex items-center">
             <Link to={'/dashboard/profile'}>
               <img
                 src={user?.photoURL || '/user-demo.png'}
@@ -153,7 +156,7 @@ const Navbar = () => {
                 Logout
               </button>
             </Link>
-          </>
+          </div>
         ) : (
           <>
             <div className="hidden md:flex">
@@ -172,8 +175,8 @@ const Navbar = () => {
                 </button>
               </Link>
             </div>
-            <div className='md:hidden'>
-              <h2 className='font-bold text-xl uppercase'>oldschool</h2>
+            <div className="md:hidden">
+              <h2 className="font-bold text-xl uppercase">oldschool</h2>
             </div>
           </>
         )}

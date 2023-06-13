@@ -15,26 +15,26 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        console.log({loggedUser});
 
-        // const savedUser = {
-        //   name: loggedUser?.displayName,
-        //   email: loggedUser?.email,
-        // };
-        // console.log(savedUser);
+        const savedUser = {
+          name: loggedUser?.displayName,
+          email: loggedUser?.email,
+        };
+        console.log(savedUser);
 
         // // post users to to database:
-        // fetch(`http://localhost:2000/users`, {
-        //   method: 'POST',
-        //   headers: {
-        //     'content-type': 'application/json',
-        //   },
-        //   body: JSON.stringify(savedUser),
-        // })
-        //   .then((res) => res.json())
-        //   .then(() => {
-        //     navigate(from, { replace: true });
-        //   });
+        fetch(`http://localhost:2000/users`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            navigate(from, { replace: true });
+          });
 
         // confirmation:
         Swal.fire({
