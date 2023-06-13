@@ -12,7 +12,6 @@ const Classes = () => {
   const [displayedCards, setDisplayedCards] = useState(6);
 
   const handleDisplayCards = () => {
-    console.log(classes.length);
     setDisplayedCards(classes.length);
   };
 

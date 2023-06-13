@@ -23,7 +23,6 @@ import JoinUs from '../shared/footer/joinUs/JoinUs';
 import Privacy from '../shared/footer/privacy/Privacy';
 import Terms from '../shared/footer/terms/Terms';
 import InstructorProfile from '../shared/instructors/InstructorProfile';
-import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
@@ -37,6 +36,10 @@ const router = createBrowserRouter([
         element: <Classes></Classes>,
       },
       {
+        path: '/class-details',
+        element: <PrivateRoute><ClassDetails></ClassDetails></PrivateRoute>
+      },
+      {
         path: '/instructors',
         element: <Instructors></Instructors>,
       },
@@ -44,10 +47,6 @@ const router = createBrowserRouter([
       { path: '/blog', element: <Blog></Blog> },
       { path: '/login', element: <Login></Login> },
       { path: '/signup', element: <SignUp></SignUp> },
-      {
-        path: '/class-details',
-        element: <ClassDetails></ClassDetails>,
-      },
       {
         path: '/instructor-profile',
         element: <InstructorProfile></InstructorProfile>,
@@ -74,17 +73,17 @@ const router = createBrowserRouter([
       {
         path: 'all-users',
         element: (
-          <AdminRoute>
+          // <AdminRoute>
+          // </AdminRoute>
             <AllUsers></AllUsers>
-          </AdminRoute>
         ),
       },
       {
         path: 'analytics',
         element: (
-          <AdminRoute>
+          // <AdminRoute>
+          // </AdminRoute>
             <Analytics></Analytics>
-          </AdminRoute>
         ),
       },
     ],

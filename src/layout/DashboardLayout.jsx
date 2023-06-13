@@ -5,13 +5,13 @@ import { MdDisabledByDefault, MdTableChart } from 'react-icons/md';
 import { TbAdjustmentsHorizontal } from 'react-icons/tb';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAdmin from '../hooks/useAdmin';
+// import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
 import Footer from '../shared/footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
 
 const DashboardLayout = () => {
-  const [isAdmin] = useAdmin();
+  // const [isAdmin] = useAdmin();
   const { user, logOut, setLoading } = useAuth();
   const navigate = useNavigate();
 

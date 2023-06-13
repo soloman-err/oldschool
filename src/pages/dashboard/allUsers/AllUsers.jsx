@@ -2,17 +2,69 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import ButtonWide from '../../../components/buttonWide/ButtonWide';
 import PageTitle from '../../../components/pageTitle/PageTitle';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
+  // const [selectedRole, setSelectedRole] = useState('');
+  // const [showSelect, setShowSelect] = useState(false);
   const [axiosSecure] = useAxiosSecure();
+
   const { data: users = [], refetch } = useQuery(['users'], async () => {
     const res = await axiosSecure.get('/users');
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   });
+
+  // Make an admin:
+  const handleMakeAdmin = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `${user?.name} will be an admin!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, make admin',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:2000/users/admin/${user?._id}`, {
+          method: 'PATCH',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            refetch();
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              Swal.fire(
+                'Success!',
+                `${user?.name} has been made an admin.`,
+                'success'
+              );
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            Swal.fire(
+              'Error!',
+              'An error occurred while making the user an admin.',
+              'error'
+            );
+          });
+      }
+    });
+
+    // setShowSelect(true);
+
+    // if (selectedRole) {
+    //   setSelectedRole('');
+    //   setShowSelect(false);
+    // }
+  };
+
+  const handleDelete = (user) => {};
 
   // users:
   // const users = [
@@ -34,9 +86,9 @@ const AllUsers = () => {
         <title>oldschool | All users</title>
       </Helmet>
 
-      <PageTitle heading={'All users'} subHeading={'members of oldschool'}/>
+      <PageTitle heading={'All users'} subHeading={'Members of oldschool'} />
 
-      <div className='pl-2'>
+      <div className="pl-2">
         <h3 className="badge font-bold bg-zinc-700 text-white">
           Total user: {users.length}
         </h3>
@@ -70,14 +122,30 @@ const AllUsers = () => {
                     </div>
                   </td>
                   <td className="opacity-90">{user?.email}</td>
+
                   <td>
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-sm btn-ghost rounded bg-transparent"
+                      className="badge badge-info text-white capitalize border-none"
                     >
                       {user?.role === 'admin' ? 'Admin' : <FaUserShield />}
                     </button>
+
+                    {/* {showSelect ? (
+                      <select
+                        value={selectedRole}
+                        onChange={(e) => setSelectedRole(e.target.value)}
+                      >
+                        <option value="">Set Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="instructor">Instructor</option>
+                        <option value="user">User</option>
+                      </select>
+                    ) : (
+                      <>{user?.role}</>
+                    )} */}
                   </td>
+
                   <th>
                     <button
                       onClick={() => handleDelete(user)}
