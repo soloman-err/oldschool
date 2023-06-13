@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
@@ -11,6 +11,7 @@ const AllUsers = () => {
   // const [selectedRole, setSelectedRole] = useState('');
   // const [showSelect, setShowSelect] = useState(false);
   const [axiosSecure] = useAxiosSecure();
+  const [displayUsers, setDisplayUsers] = useState(10);
 
   const { data: users = [], refetch } = useQuery(['users'], async () => {
     const res = await axiosSecure.get('/users');
@@ -119,6 +120,11 @@ const AllUsers = () => {
       }
     });
   };
+  
+  // User display actions:
+  const handleDisplayUsers = () => {
+    setDisplayUsers(users.length);
+  };
 
   return (
     <div>
@@ -135,21 +141,23 @@ const AllUsers = () => {
       </div>
 
       <div className="overflow-x-auto w-full border rounded mt-2 bg-zinc-50">
-        <table className="table w-full">
+        <table className="table table-zebra w-full">
           {/* head */}
           <thead className="bg-zinc-200">
             <tr>
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
-              <th className="text-center">Role</th>
+              <th colSpan={2} className="text-center">
+                Role
+              </th>
               <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
             {users &&
-              users?.map((user, index) => (
+              users?.slice(0, displayUsers)?.map((user, index) => (
                 <tr key={index}>
                   <th>
                     <label>{index + 1}</label>
@@ -166,7 +174,7 @@ const AllUsers = () => {
                   <td className="flex flex-row gap-2">
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-sm text-xs capitalize border-none"
+                      className="btn btn-xs rounded btn-info text-white text-xs capitalize border-none"
                       disabled={user?.role === 'admin' && true}
                     >
                       {user?.role === 'admin' ? 'Admin' : 'Make Admin'}
@@ -187,9 +195,11 @@ const AllUsers = () => {
                       <>{user?.role}</>
                     )} */}
                     </>
+                  </td>
+                  <td>
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className="btn btn-sm text-xs capitalize border-none"
+                      className="btn btn-xs rounded btn-info text-white text-xs capitalize border-none"
                       disabled={user?.role === 'instructor' && true}
                     >
                       {user?.role === 'instructor'
@@ -212,46 +222,11 @@ const AllUsers = () => {
         </table>
       </div>
 
-      <ButtonWide />
+      {displayUsers < users.length && (
+        <ButtonWide onClick={handleDisplayUsers} />
+      )}
     </div>
   );
 };
 
 export default AllUsers;
-{
-  /* {users &&
-              users?.map((user, index) => (
-                <tr key={index}>
-                  <th>
-                    <label>{index + 1}</label>
-                  </th>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div>
-                        <div className="font-bold">{user?.name}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {user?.email}
-                    <br />
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-sm bg-sky-100 btn-ghost"
-                    >
-                      {user?.role === 'admin' ? 'Admin' : <FaUserShield />}
-                    </button>
-                  </td>
-                  <th>
-                    <button
-                      onClick={() => handleDelete(user)}
-                      className="btn btn-sm btn-ghost bg-red-100"
-                    >
-                      <FaTrashAlt className="text-red-500" />
-                    </button>
-                  </th>
-                </tr>
-              ))} */
-}
