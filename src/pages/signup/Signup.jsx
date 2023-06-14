@@ -58,11 +58,8 @@ const SignUp = () => {
         <title>oldschool | Register</title>
       </Helmet>
       <div className="flex justify-center items-center mt-5">
-        <div className="">
-          <form
-            className="w-full bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-1 border"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+        <div className="bg-white shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 space-y-1 border">
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
             <h1 className="text-center text-zinc-900 font-bold pb-5 text-lg">
               Please Register
             </h1>
@@ -216,9 +213,8 @@ const SignUp = () => {
                 </Link>
               </span>
             </div>
-
-            <SocialLogin />
           </form>
+          <SocialLogin />
         </div>
       </div>
     </>

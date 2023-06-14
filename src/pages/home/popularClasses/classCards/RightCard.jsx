@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RightCard = ({ classItem }) => {
-  console.log(classItem);
   const { image, price, seats, subject } = classItem;
 
   return (
@@ -12,8 +11,9 @@ const RightCard = ({ classItem }) => {
         <p className="">
           <span>${price}</span>
         </p>
-        <p className='text-lg'>
-          <span className='font-bold'>Available Seats:</span> <span className=''>{seats}</span>
+        <p className="text-lg">
+          <span className="font-bold">Available Seats:</span>{' '}
+          <span className="">{seats}</span>
         </p>
       </div>
       <div className="w-full md:w-[70%] md:order-2 h-full border border-slate-400 md:pl-3 border-t-0 border-r-0">

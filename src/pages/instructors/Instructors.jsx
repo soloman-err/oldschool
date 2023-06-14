@@ -8,9 +8,7 @@ import useInstructors from '../../hooks/useInstructors';
 import InstructorCard from '../../shared/instructors/InstructorCard';
 
 const Instructors = () => {
-  // const { user, logOut, setLoading } = useAuth();
-  // const navigate = useNavigate();
-  const instructors = useInstructors();
+  const [instructors] = useInstructors();
 
   const [displayedInstructors, setDisplayedInstructors] = useState(6);
 
@@ -33,7 +31,9 @@ const Instructors = () => {
           ))}
       </div>
 
-      <ButtonWide onClick={handleDisplayedInstructors} />
+      {displayedInstructors < instructors.length && (
+        <ButtonWide onClick={handleDisplayedInstructors} />
+      )}
     </section>
   );
 };

@@ -156,7 +156,7 @@ const DashboardLayout = () => {
                         className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
                         onClick={closeDrawer}
                       >
-                        <MdOutlineDashboard size={15} /> Stats
+                        <MdOutlineDashboard size={15} /> Analytics
                       </Link>
                     </li>
                     <li className="rounded bg-zinc-700">

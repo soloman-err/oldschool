@@ -3,8 +3,10 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useInstructors = () => {
   const [axiosSecure] = useAxiosSecure();
+
   const { data: instructors = [], isLoading: loading } = useQuery({
     queryKey: ['instructor'],
+
     queryFn: async () => {
       try {
         const res = await axiosSecure.get('/users/instructors');

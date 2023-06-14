@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post('http://localhost:2000/jwt', {
+          .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
             email: currentUser.email,
           })
           .then((data) => {

@@ -16,7 +16,7 @@ const Contact = () => {
 
       <div className="flex flex-col md:flex-row">
         <div className="hero">
-          <img src="/class.png" alt="contact-form-featured-image" />
+          <img src="/contact.png" alt="contact-form-featured-image" className='w-32'/>
         </div>
         <div className="hero">
           <div className="hero-content flex-col lg:flex-row-reverse">

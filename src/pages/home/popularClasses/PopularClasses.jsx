@@ -14,11 +14,12 @@ const PopularClasses = () => {
       <div className="space-y-6 md:space-y-20 mt-8">
         {classes &&
           classes.slice(0, 6).map((classItem, index) => {
+            const uniqueKey = `card-${index}-${classItem?._id}`;
             if (index % 2 === 0) {
-              return <LeftCard key={index} classItem={classItem} />;
+              return <LeftCard key={uniqueKey} classItem={classItem} />;
             } else {
               return (
-                <div className="flex justify-end">
+                <div key={uniqueKey} className="flex justify-end">
                   <RightCard classItem={classItem} />
                 </div>
               );

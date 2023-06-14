@@ -48,11 +48,8 @@ const Login = () => {
         <title>oldschool | Login</title>
       </Helmet>
       <div className="flex justify-center items-center mt-5">
-        <div className="">
-          <form
-            className="w-3/3 bg-white shadow-2xl rounded-xl px-8 pt-5 pb-8 mb-4 space-y-2 border"
-            onSubmit={handleLogin}
-          >
+        <div className="bg-white shadow-2xl rounded-xl px-8 pt-5 pb-8 mb-4 space-y-2 border">
+          <form className="w-3/3" onSubmit={handleLogin}>
             <h1 className="text-center text-slate-800 font-bold pb-10 text-xl">
               Please login
             </h1>
@@ -97,9 +94,8 @@ const Login = () => {
                 Sign up
               </Link>
             </span>
-
-            <SocialLogin />
           </form>
+          <SocialLogin />
         </div>
       </div>
     </>
