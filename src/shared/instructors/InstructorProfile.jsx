@@ -1,17 +1,18 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
-    FaFacebook,
-    FaInstagram,
-    FaLinkedin,
-    FaTwitter,
-    FaUser,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaUser,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
-const InstructorProfile = () => {
+const InstructorProfile = ({instructor}) => {
   const { user } = useAuth();
+  console.log(instructor);
 
   return (
     <section>

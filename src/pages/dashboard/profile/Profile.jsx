@@ -12,7 +12,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Profile = () => {
   const { user } = useAuth();
-  // console.log(user);
+  const { displayName, email, photoURL } = user;
 
   return (
     <>
@@ -31,24 +31,23 @@ const Profile = () => {
                   className="relative w-full h-[100px] md:h-[150px] object-cover"
                 />
                 <img
-                  src={user ? user?.photoURL : '/user-demo.png'}
+                  src={user ? photoURL : '/user-demo.png'}
                   alt="user-profile-image"
                   className="absolute -translate-y-10 rounded-full left-5 w-20 h-20 border-4 border-white object-cover"
                 />
               </div>
 
-              <h2 className="text-xl">{user?.displayName}</h2>
+              <h2 className="text-xl"></h2>
             </div>
 
-            <div className="py-10 px-4">
-              <h2 className="text-2xl font-bold">Antonio Joseph</h2>
+            <div className="pt-10 px-4">
+              <h2 className="text-2xl font-bold">{displayName}</h2>
               <div className="flex flex-row items-center gap-2 mb-2">
                 <span className="opacity-80 text-sm tracking-wide font-bold bg-sky-50 border border-slate-400 px-2 rounded-full">
-                  Instructor
+                  User
                 </span>
                 <span className="flex items-center gap-1 font-bold text-sky-500">
-                  <FaUser />
-                  129 Followers
+                  <FaUser />0 Followers
                 </span>
               </div>
               <hr />
@@ -61,19 +60,23 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-          </div>
-
-          <div className="w-full p-4 text-sm">
-            <h3 className="text-xl font-bold underline underline-offset-4 pb-2">About Info:</h3>
-            <p className="">
+            
+            <div className="w-full p-4 text-sm">
+              <h3 className="text-xl font-bold underline underline-offset-4 pb-2">
+                About Info:
+              </h3>
+              {/* <p className="">
               <span className="font-bold">Blood: </span>A-
-            </p>
-            <p className="">
-              <span className="font-bold">Email: </span>antonio.j@gmail.com
-            </p>
-            <p className="">
-              <span className="font-bold">Bio: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempore.
-            </p>
+            </p> */}
+              <p className="">
+                <span className="font-bold">Email: </span>
+                {email}
+              </p>
+              <p className="">
+                <span className="font-bold">Bio: </span>Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Delectus, tempore.
+              </p>
+            </div>
           </div>
         </div>
 
