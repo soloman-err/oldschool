@@ -9,23 +9,18 @@ const Featured = () => {
 
           <div className="border-l-4 pl-2 border-red-600">
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt
-              quae quidem fugiat est iste necessitatibus.
+              OldSchool Edu prides itself on employing innovative technologies
+              and modern teaching methodologies to enhance the learning
+              experience.
             </p>
             <p>
-              exercitationem obcaecati repellendus atque dolor fuga velit
-              asperiores libero
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt
-              quae quidem fugiat est iste necessitatibus.
-            </p>
-            <p>
-              exercitationem obcaecati repellendus atque dolor fuga velit
-              asperiores libero
+              Together, let us build a solid foundation for success, empower
+              young minds, and inspire a lifelong love for learning.
             </p>
           </div>
-          <button className='btn btn-wide rounded-none btn-sm'>Watch more</button>
+          <button className="btn btn-wide rounded-none btn-sm">
+            Watch more
+          </button>
         </div>
       </div>
       <div className="w-full order-1 bg-slate-950 h-[200px] md:h-[300px]">
