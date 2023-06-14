@@ -9,7 +9,7 @@ const Navbar = () => {
     { name: 'Classes', to: '/classes' },
     { name: 'Instructors', to: '/instructors' },
     { name: 'Contact', to: '/contact' },
-    { name: 'Dashboard', to: '/dashboard/analytics' },
+    { name: 'Dashboard', to: '/dashboard/profile' },
   ];
 
   const { user, logOut } = useAuth();
@@ -37,10 +37,10 @@ const Navbar = () => {
           logOut();
         }
       });
-      navigate('/');
     } catch (error) {
       console.log(error?.message);
     }
+    navigate('');
   };
 
   return (
@@ -141,7 +141,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center space-x-1">
         {user ? (
-          <div className="hidden md:flex items-center">
+          <div className="hidden gap-1 md:flex items-center">
             <Link to={'/dashboard/profile'}>
               <img
                 src={user?.photoURL || '/user-demo.png'}
@@ -152,7 +152,7 @@ const Navbar = () => {
             </Link>
             <span className="w-[2px] h-6 bg-slate-400"></span>
             <Link to={''}>
-              <button onClick={handleLogOut} className="btn btn-sm btn-ghost">
+              <button onClick={handleLogOut} className="btn btn-sm rounded">
                 Logout
               </button>
             </Link>

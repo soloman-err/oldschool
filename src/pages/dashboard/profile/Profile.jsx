@@ -12,7 +12,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Profile = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   return (
     <>
@@ -33,7 +33,7 @@ const Profile = () => {
                 <img
                   src={user ? user?.photoURL : '/user-demo.png'}
                   alt="user-profile-image"
-                  className="absolute -translate-y-10 rounded-full left-5 w-20 h-20 border-4 border-white"
+                  className="absolute -translate-y-10 rounded-full left-5 w-20 h-20 border-4 border-white object-cover"
                 />
               </div>
 

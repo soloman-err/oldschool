@@ -1,17 +1,24 @@
 import { FaArrowRight, FaBook, FaHome, FaUser, FaUsers } from 'react-icons/fa';
 import { FiLogOut } from 'react-icons/fi';
 import { IoMdDocument, IoMdLogIn, IoMdSettings } from 'react-icons/io';
-import { MdDisabledByDefault, MdTableChart } from 'react-icons/md';
-import { TbAdjustmentsHorizontal } from 'react-icons/tb';
+import {
+  MdDisabledByDefault,
+  MdOutlineDashboard,
+  MdTableChart
+} from 'react-icons/md';
+import { TfiLayoutTabWindow } from 'react-icons/tfi';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-// import useAdmin from '../hooks/useAdmin';
+import useAdmin from '../hooks/useAdmin';
 import useAuth from '../hooks/useAuth';
+import useInstructor from '../hooks/useInstructor';
 import Footer from '../shared/footer/Footer';
 import Navbar from '../shared/navbar/Navbar';
 
 const DashboardLayout = () => {
-  // const [isAdmin] = useAdmin();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const { user, logOut, setLoading } = useAuth();
   const navigate = useNavigate();
 
@@ -96,7 +103,7 @@ const DashboardLayout = () => {
                 <img
                   src={user?.photoURL || '/user-demo.png'}
                   alt="user-placeholder-image"
-                  className="w-16 mx-aut rounded-full"
+                  className="w-20 h-20 rounded-full object-cover"
                 />
               </div>
 
@@ -124,48 +131,90 @@ const DashboardLayout = () => {
                   >
                     <FaUser size={15} />
                     My Profile
-                    <span className="badge badge-sm ml-auto bg-green-300 border-none">
-                      {'admin'}
-                    </span>
-                  </Link>
-                </li>
-                <li className="rounded bg-zinc-700">
-                  <Link
-                    to={'add-class'}
-                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
-                    onClick={closeDrawer}
-                  >
-                    <FaBook size={15} /> Add a class
-                  </Link>
-                </li>
-                <li className="rounded bg-zinc-700">
-                  <Link
-                    to={'my-classes'}
-                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
-                    onClick={closeDrawer}
-                  >
-                    <MdTableChart size={15} /> My classes
-                  </Link>
-                </li>
-                <li className="rounded bg-zinc-700">
-                  <Link
-                    to={'all-users'}
-                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
-                    onClick={closeDrawer}
-                  >
-                    <FaUsers size={15} /> All users
-                  </Link>
-                </li>
-                <li className="rounded bg-zinc-700">
-                  <Link
-                    to={'analytics'}
-                    className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
-                    onClick={closeDrawer}
-                  >
-                    <TbAdjustmentsHorizontal size={15} /> Analytics
+                    {isAdmin ? (
+                      <span className="badge badge-sm ml-auto bg-green-300 border-none">
+                        {'Admin'}
+                      </span>
+                    ) : isInstructor ? (
+                      <span className="badge badge-sm ml-auto bg-green-300 border-none">
+                        {'Instructor'}
+                      </span>
+                    ) : (
+                      <span className="badge badge-sm ml-auto bg-green-300 border-none">
+                        {'User'}
+                      </span>
+                    )}
                   </Link>
                 </li>
 
+                {/* Admin dashboard */}
+                {isAdmin && (
+                  <>
+                    <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'analytics'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <MdOutlineDashboard size={15} /> Stats
+                      </Link>
+                    </li>
+                    <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'all-users'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <FaUsers size={15} /> All Users
+                      </Link>
+                    </li>
+                    <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'all-classes'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <TfiLayoutTabWindow size={15} /> All Classes
+                      </Link>
+                    </li>
+                    {/* <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'all-instructors'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <MdTableChart size={15} /> All Instructors
+                      </Link>
+                    </li> */}
+                  </>
+                )}
+
+                {/* Instructor dashboard */}
+                {isInstructor && (
+                  <>
+                    <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'add-class'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <FaBook size={15} /> Add a class
+                      </Link>
+                    </li>
+
+                    <li className="rounded bg-zinc-700">
+                      <Link
+                        to={'my-classes'}
+                        className="flex flex-row gap-2 md:text-md p-1 md:p-2 items-center"
+                        onClick={closeDrawer}
+                      >
+                        <MdTableChart size={15} /> My classes
+                      </Link>
+                    </li>
+                  </>
+                )}
+
+                {/* --------divider-------- */}
                 <div className="divider"></div>
 
                 <li className="w-full rounded bg-zinc-700">

@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import SocialLogin from '../login/SocialLogin';
 
 const SignUp = () => {
+  const [axiosSecure] = useAxiosSecure();
   const {
     reset,
     register,
@@ -16,50 +18,37 @@ const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     // create a new user:
-    try{
-      createUser(data.email, data.password).then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-  
-        updateUserProfile(data.name, data.photoURL)
-          .then(() => {
-            const savedUser = {
-              name: data.name,
-              email: data.email,
-            };
-  
-            fetch(`http://localhost:2000/users`, {
-              method: 'POST',
-              headers: {
-                'content-type': 'application/json',
-              },
-              body: JSON.stringify(savedUser),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data.data);
-                if (data.insertedId) {
-                  reset();
-                  Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Welcome to oldschool!',
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                  navigate('/');
-                }
-              });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      });
-    }
-    catch(error) {
-      console.log("An error occurred:", error);
+    try {
+      const result = await createUser(data?.email, data?.password);
+      const loggedUser = result.user;
+      console.log(loggedUser);
+
+      await updateUserProfile(data?.name, data?.photoURL);
+
+      const savedUser = {
+        name: data.name,
+        email: data.email,
+      };
+
+      const response = await axiosSecure.post('/users', savedUser);
+      const responseData = response.data;
+      console.log(responseData);
+
+      if (responseData.insertedIdd) {
+        reset();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Welcome to oldschool!',
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate('/');
+      }
+    } catch (error) {
+      console.log('An error occurred:', error);
     }
   };
 
@@ -222,7 +211,7 @@ const SignUp = () => {
               <span className="label-text-alt">
                 Already have an account?
                 <Link to={'/login'} className="text-blue-800">
-                  {" "}
+                  {' '}
                   Login
                 </Link>
               </span>

@@ -6,6 +6,7 @@ import Blog from '../pages/blog/Blog';
 import Classes from '../pages/classes/Classes';
 import Contact from '../pages/contact/Contact';
 import AddClass from '../pages/dashboard/addClass/AddClass';
+import AllClasses from '../pages/dashboard/allClasses/AllClasses';
 import AllUsers from '../pages/dashboard/allUsers/AllUsers';
 import Analytics from '../pages/dashboard/analytics/analytics';
 import MyClasses from '../pages/dashboard/myClasses/MyClasses';
@@ -23,6 +24,7 @@ import JoinUs from '../shared/footer/joinUs/JoinUs';
 import Privacy from '../shared/footer/privacy/Privacy';
 import Terms from '../shared/footer/terms/Terms';
 import InstructorProfile from '../shared/instructors/InstructorProfile';
+import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
@@ -37,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/class-details',
-        element: <PrivateRoute><ClassDetails></ClassDetails></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ClassDetails></ClassDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/instructors',
@@ -73,17 +79,25 @@ const router = createBrowserRouter([
       {
         path: 'all-users',
         element: (
-          // <AdminRoute>
-          // </AdminRoute>
+          <AdminRoute>
             <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'all-classes',
+        element: (
+          <AdminRoute>
+            <AllClasses></AllClasses>
+          </AdminRoute>
         ),
       },
       {
         path: 'analytics',
         element: (
-          // <AdminRoute>
-          // </AdminRoute>
+          <AdminRoute>
             <Analytics></Analytics>
+          </AdminRoute>
         ),
       },
     ],

@@ -97,7 +97,7 @@ const AllUsers = () => {
     });
   };
 
-  // Delete an user:s
+  // Delete an user:
   const handleDelete = (user) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -114,13 +114,13 @@ const AllUsers = () => {
 
           refetch();
           if (res.data?.deletedCount > 0) {
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire('Deleted!', 'An user has been deleted.', 'success');
           }
         });
       }
     });
   };
-  
+
   // User display actions:
   const handleDisplayUsers = () => {
     setDisplayUsers(users.length);

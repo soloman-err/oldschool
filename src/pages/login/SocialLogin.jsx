@@ -2,8 +2,10 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const SocialLogin = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { googleSignIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const SocialLogin = () => {
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
-        console.log({loggedUser});
+        console.log({ loggedUser });
 
         const savedUser = {
           name: loggedUser?.displayName,
@@ -23,15 +25,8 @@ const SocialLogin = () => {
         };
         console.log(savedUser);
 
-        // // post users to to database:
-        fetch(`http://localhost:2000/users`, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify(savedUser),
-        })
-          .then((res) => res.json())
+        // post users to to database:
+        axiosSecure.post('/users', savedUser)
           .then(() => {
             navigate(from, { replace: true });
           });
