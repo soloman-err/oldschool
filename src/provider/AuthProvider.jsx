@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser && currentUser?.email) {
         axios
-          .post(`http://localhost:2000/jwt`, {
+          .post(`https://oldschool-server.vercel.app/jwt`, {
             email: currentUser?.email,
           })
           .then((data) => {
