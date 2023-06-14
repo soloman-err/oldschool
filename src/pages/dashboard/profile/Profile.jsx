@@ -28,7 +28,7 @@ const Profile = () => {
                 <img
                   src="/instructor-i.jpg"
                   alt="profile-cover-image"
-                  className="relative w-full h-[100px] md:h-[150px] object-cover"
+                  className="relative w-full h-[150px] md:h-[200px] lg:h-[300px] object-cover"
                 />
                 <img
                   src={user ? photoURL : '/user-demo.png'}

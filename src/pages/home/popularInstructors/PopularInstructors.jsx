@@ -4,7 +4,6 @@ import InstructorCard from '../../../shared/instructors/InstructorCard';
 
 const PopularInstructors = () => {
   const [instructors] = useInstructors();
-  console.log(instructors);
 
   return (
     <div className="mt-8 mb-10 px-5 w-11/12 mx-auto">
