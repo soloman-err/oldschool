@@ -53,13 +53,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) {
+      if (currentUser && currentUser?.email) {
         axios
-          .post(`${import.meta.env.VITE_SERVER_URL}/jwt`, {
-            email: currentUser.email,
+          .post(`http://localhost:2000/jwt`, {
+            email: currentUser?.email,
           })
           .then((data) => {
             localStorage.setItem('access_token', data.data);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
             setLoading(false);
           });
       } else {
